@@ -522,7 +522,7 @@ MonoBehaviour:
   gravity: {x: 0, y: -30, z: 0}
   maxStableMoveSpeed: 10
   stableMovementSharpness: 15
-  orientationSharpness: 10
+  orientationSharpness: 7
   _jumpSpeed: 10
 --- !u!114 &717215339
 MonoBehaviour:

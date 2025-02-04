@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
     
     private Vector3 _moveInputVector, _lookInputVector;
     private bool _jumpRequested;
+    private bool _jumped = false;
     
     
 
@@ -135,6 +136,13 @@ public class CharacterController : MonoBehaviour, ICharacterController
             currentVelocity += (motor.CharacterUp * _jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
             _jumpRequested = false;
             motor.ForceUnground();
+            _jumped = true;
+        }
+        else if (_jumpRequested && _jumped)
+        {
+             currentVelocity += (motor.CharacterUp * _jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
+             _jumpRequested = false;
+             _jumped = false;
         }
         
     }
