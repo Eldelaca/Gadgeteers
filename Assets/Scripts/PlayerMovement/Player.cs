@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         inputs.MoveAxisRight = Input.GetAxis("Horizontal");
         inputs.CameraRotation = playerCamera.transform.rotation;
         inputs.JumpPressed = Input.GetButtonDown("Jump");
+        inputs.JumpReleased = Input.GetKeyUp(KeyCode.Space);
         
         characterController.SetInputs(ref inputs);
     }

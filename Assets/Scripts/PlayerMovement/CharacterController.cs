@@ -1,3 +1,4 @@
+using System;
 using KinematicCharacterController;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public struct PlayerInputs
     public float MoveAxisRight;
     public Quaternion CameraRotation;
     public bool JumpPressed;
+    public bool JumpReleased;
 }
 
 public class CharacterController : MonoBehaviour, ICharacterController
@@ -17,13 +19,14 @@ public class CharacterController : MonoBehaviour, ICharacterController
     [SerializeField]
     private Vector3 gravity = new Vector3(0, -9.81f, 0);
 
-    [SerializeField]
-    private float maxStableMoveSpeed = 10f, 
-        stableMovementSharpness = 15f, 
+    [SerializeField] private float maxStableMoveSpeed = 10f,
+        stableMovementSharpness = 15f,
         orientationSharpness = 10f,
-        _jumpSpeed = 10f;
+        coyoteTime = 0.5f,
+        jumpSpeed = 10f;
     
     private Vector3 _moveInputVector, _lookInputVector;
+    private float coyoteTimeCounter;
     private bool _jumpRequested;
     private bool _jumped = false;
     
@@ -114,6 +117,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
     {
         if (motor.GroundingStatus.IsStableOnGround)
         {
+            coyoteTimeCounter = coyoteTime;
             float currentVelocityMagnitude = currentVelocity.magnitude;
             Vector3 effectiveGroundNormal = motor.GroundingStatus.GroundNormal;
         
@@ -129,20 +133,24 @@ public class CharacterController : MonoBehaviour, ICharacterController
         else
         {
             currentVelocity += gravity * deltaTime;
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (_jumpRequested && motor.GroundingStatus.IsStableOnGround)
+        if (_jumpRequested && coyoteTimeCounter > 0f) 
         {
-            currentVelocity += (motor.CharacterUp * _jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
-            _jumpRequested = false;
-            motor.ForceUnground();
-            _jumped = true;
+                currentVelocity += (motor.CharacterUp * jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
+                motor.ForceUnground();
+                _jumpRequested = false;
+                _jumped = true;
+                coyoteTimeCounter = 0f;
+
+
         }
         else if (_jumpRequested && _jumped)
-        {
-             currentVelocity += (motor.CharacterUp * _jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
-             _jumpRequested = false;
-             _jumped = false;
+        { 
+            currentVelocity += (motor.CharacterUp * jumpSpeed) - Vector3.Project(currentVelocity, motor.CharacterUp);
+            _jumpRequested = false;
+            _jumped = false;
         }
         
     }
