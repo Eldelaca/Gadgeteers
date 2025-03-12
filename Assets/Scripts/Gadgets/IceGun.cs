@@ -32,7 +32,6 @@ public class IceGun : MonoBehaviour
         if (lastFire < fireCooldown)
         {
             lastFire += Time.deltaTime;
-            Debug.Log(lastFire);
         }
     }
 }
