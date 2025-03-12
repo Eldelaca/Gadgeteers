@@ -403,7 +403,15 @@ MonoBehaviour:
   maxStableMoveSpeed: 10
   stableMovementSharpness: 15
   orientationSharpness: 7
-  _jumpSpeed: 10
+  coyoteTime: 0.5
+  jumpSpeed: 10
+  _moveInputVector: {x: 0, y: 0, z: 0}
+  _lookInputVector: {x: 0, y: 0, z: 0}
+  coyoteTimeCounter: 0
+  _jumpRequested: 0
+  _jumped: 0
+  equip: {fileID: 0}
+  isOnWater: 0
 --- !u!1 &8687895142855393461
 GameObject:
   m_ObjectHideFlags: 0
