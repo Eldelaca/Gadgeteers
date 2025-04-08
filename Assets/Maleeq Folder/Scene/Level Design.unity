@@ -3196,8 +3196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0123407a13ad8d940b050c4ec89717dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCount: 0
-  coinText: {fileID: 0}
 --- !u!4 &410181625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: bdfb95b0813e88a4480516b45a3ddaa8, type: 3}
@@ -5715,10 +5713,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 1.6194073
+  m_Height: 38.4886
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.00000012129622, y: -0.000000047896833, z: 1.1194072}
 --- !u!4 &845940622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b11cabdb487b9a64c9e11612f3fa005d, type: 3}
@@ -10597,9 +10595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a52de758419c94b953e75f3b8762ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1779283932}
-  boostForce: 4.27
-  overrideVerticalVelocity: 0
 --- !u!65 &1475918858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12479,11 +12474,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1779283932 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7256335773345868973, guid: 1c9a484c1797a4a4191256e3293e414d, type: 3}
-  m_PrefabInstance: {fileID: 239421914}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1780167528
 PrefabInstance:
   m_ObjectHideFlags: 0
