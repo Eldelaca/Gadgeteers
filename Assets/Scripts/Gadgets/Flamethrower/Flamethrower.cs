@@ -48,7 +48,8 @@ public class Flamethrower : MonoBehaviour
     {
         aiHealth enemyHealth = enemy.GetComponent<aiHealth>();
 
-        // This coroutine runs while the enemy is in range and the flamethrower is active
+        // This coroutine runs while the enemy is in range (Collider)
+        // and if the flamethrower is active
         while (enemiesInRange.Contains(enemy) && flamethrowerCollider.activeSelf)
         {
             if (enemyHealth != null)
