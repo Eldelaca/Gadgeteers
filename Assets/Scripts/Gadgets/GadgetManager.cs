@@ -37,5 +37,11 @@ namespace Gadgets
             
             _equippedID = equipID;
         }
+
+        public void OnUnEquip()
+        {
+            Destroy(_equippedGadget);
+            _equippedID = 0;
+        }
     }
 }
