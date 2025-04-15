@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - AI
+  - Gadget
   layers:
   - Default
   - TransparentFX
