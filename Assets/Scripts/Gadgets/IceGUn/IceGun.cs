@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Gadgets;
 
 /// <summary>
 /// This code handles the IceGun:
@@ -13,14 +14,8 @@ using Unity.VisualScripting;
 public class IceGun : MonoBehaviour
 {
     [Header("Gun Settings")]
+    public GadgetStats IceGunStats; // 
     public GameObject IceBulletPrefab;  // Prefab of the ice projectile to instantiate
-    
-    public float shootingCooldown = 1f;   // Cooldown in seconds before next shot
-
-    [Header("Bullet Settings")]
-    public float bulletForce = 500f;      // Force applied to the projectile
-
-    
     private bool canShoot = true;
 
     private void Update()
@@ -43,7 +38,7 @@ public class IceGun : MonoBehaviour
         if (rb != null)
         {
             // Addds Force forwards
-            rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
+            rb.AddForce(transform.forward * IceGunStats.range, ForceMode.Impulse);
         }
         else
         {
@@ -58,7 +53,7 @@ public class IceGun : MonoBehaviour
     // Coroutine for handling the shooting cooldown
     private IEnumerator ShootingCooldown()
     {
-        yield return new WaitForSeconds(shootingCooldown);
+        yield return new WaitForSeconds(IceGunStats.useCooldown);
         canShoot = true;
     }
 }

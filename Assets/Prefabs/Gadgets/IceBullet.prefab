@@ -149,5 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6cc7460c00a124aa76d94c7fc79783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
-  lifeTime: 3
+  IceGunStats: {fileID: 11400000, guid: b2e8de26bb351e8438b33c83725b1c10, type: 2}

@@ -1,29 +1,44 @@
+using Gadgets;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-// This code activates the flamethrower
 
-public class ActivateWeapons : MonoBehaviour
+public class ActiveFlameToggle : MonoBehaviour
 {
-    // Use a Bool value to active the weapons
-    public GameObject flamethrower;  
-    public bool Flamethrower = false;
+    public GameObject flamethrowerCollider;
+    public GameObject IceGun;
 
-
-
+    public GadgetManager gadgetManager;
     private void Update()
     {
-        // Flamethrower
-        if (Flamethrower)
+
+    // Flamethrower
+        // Check if the flamethrower gadget is equipped
+        if (gadgetManager.flamethrowerEquipped)
         {
+            // Even if flamethrowerCollider is inactive, we can set it active via input
             if (Input.GetMouseButtonDown(0))
             {
-                flamethrower.SetActive(true);
+                flamethrowerCollider.SetActive(true);
+                Debug.Log("?? Flamethrower activated");
+                Debug.Log("Flamethrower activated");
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                flamethrower.SetActive(false);
+                flamethrowerCollider.SetActive(false);
+                Debug.Log("Flamethrower deactivated");
             }
         }
-        
+    // IceGun
+
+        if (gadgetManager.iceBlasterEquip)
+        {
+            IceGun.SetActive(true);
+        }
+        else
+        {
+            IceGun.SetActive(false);
+        }
     }
 }

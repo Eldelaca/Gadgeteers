@@ -1,14 +1,13 @@
+using Gadgets;
 using UnityEngine;
 
 public class IceBullet : MonoBehaviour
 {
-    public float damage;          
-    public float lifeTime = 3f;   
-
+    public GadgetStats IceGunStats;
     private void Start()
     {
         // Destroy the bullet after lifeTime seconds
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, IceGunStats.useDuration);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,7 +18,7 @@ public class IceBullet : MonoBehaviour
             aiHealth enemyHealth = collision.collider.GetComponent<aiHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damage);
+                enemyHealth.TakeDamage(IceGunStats.gadgetMaxDamage);
             }
         }
         // Destroy the projectile on collision with any object

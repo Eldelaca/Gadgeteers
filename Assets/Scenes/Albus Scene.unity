@@ -493,9 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26e6b43660c8c24183b39aef7d8fc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Flamestats: {fileID: 11400000, guid: 07f440a48f3f80140a80307823566015, type: 2}
   flamethrowerCollider: {fileID: 419371677}
-  DoTdamage: 10
-  DoTRate: 1.5
 --- !u!1 &457630162
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &457630163
 Transform:
   m_ObjectHideFlags: 0
@@ -541,9 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d0cb47e219f8043bc9fd275352b0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceGunStats: {fileID: 11400000, guid: b2e8de26bb351e8438b33c83725b1c10, type: 2}
   IceBulletPrefab: {fileID: 406313899035418183, guid: 2f1378de48c3d8448ad1830520cdeef5, type: 3}
-  shootingCooldown: 1
-  bulletForce: 10
 --- !u!114 &457630165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +640,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4275395677778635381, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2022941616}
+      addedObject: {fileID: 2022941623}
   m_SourcePrefab: {fileID: 100100000, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
 --- !u!1 &1149011753
 GameObject:
@@ -725,12 +723,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278359d0f4e912143898fc243b6dd649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseGadgets:
+  - {fileID: 419371677}
+  - {fileID: 457630162}
+  bootsEquipped: 0
+  flamethrowerEquipped: 0
+  lightningWhipEquipped: 0
+  iceBlasterEquip: 0
+  playerHandle: {fileID: 0}
 --- !u!1 &2022941609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4275395677778635381, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
   m_PrefabInstance: {fileID: 655637130}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2022941616
+--- !u!114 &2022941623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,8 +748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc2b1123a619d448dc1093687bd618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flamethrower: {fileID: 419371677}
-  Flamethrower: 0
+  flamethrowerCollider: {fileID: 419371677}
+  IceGun: {fileID: 457630162}
+  gadgetManager: {fileID: 1517872142}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
