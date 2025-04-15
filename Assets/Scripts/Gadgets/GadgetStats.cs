@@ -25,7 +25,11 @@ namespace Gadgets
         [Tooltip("How many frames before the gadget can be used again")]
         public float useCooldown;
         [Tooltip("How many frames after initial use before the gadget's cooldown timer begins")]
-        public float useDuration; 
+        public float useDuration;
+
+        [Header("Weapon Exclusive Values")] 
+        [Tooltip("How many units this gadgets projectiles can travel before disappearing")]
+        public float range;
 
         [Header("Boots Exclusive Values")]
         [Tooltip("How many additional jumps do the boots grant you, 1 is a double jump, 2 a triple, etc. Set to 0 if not boots")]
