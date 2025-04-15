@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 1149011753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19035053, y: -0.5147323, z: 1.3818281}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -361,6 +361,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278359d0f4e912143898fc243b6dd649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseGadgets:
+  - {fileID: 2008336963276613913, guid: edd395dc8434f7243843e0223a709918, type: 3}
+  - {fileID: 6384342847434094926, guid: 5b3934c654848d7488feea1c18ff2035, type: 3}
+  - {fileID: 8604421897198730249, guid: 705734903cfc46a4e9cb2ff7d8a9de50, type: 3}
+  - {fileID: 2036506149677026639, guid: 2c9eded45c7b4e44b8665dacfdca947d, type: 3}
+  bootsEquipped: 0
+  flamethrowerEquipped: 0
+  lightningWhipEquipped: 0
+  iceBlasterEquip: 0
+  playerHandle: {fileID: 1697898191}
+  gadgetStats: {fileID: 11400000, guid: 947345d9aad4959449165be081411251, type: 2}
+--- !u!4 &1697898191 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2471302876458023122, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
+  m_PrefabInstance: {fileID: 655637130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
