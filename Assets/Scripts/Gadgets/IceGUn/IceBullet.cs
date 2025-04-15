@@ -3,7 +3,7 @@ using UnityEngine;
 public class IceBullet : MonoBehaviour
 {
     public float damage;          
-    public float lifeTime = 5f;   
+    public float lifeTime = 3f;   
 
     private void Start()
     {
@@ -13,7 +13,7 @@ public class IceBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If the bullet collides with an enemy tagged "AI", try to apply damage
+        // If the bullet collides with an enemy tagged "AI"
         if (collision.collider.CompareTag("AI"))
         {
             aiHealth enemyHealth = collision.collider.GetComponent<aiHealth>();

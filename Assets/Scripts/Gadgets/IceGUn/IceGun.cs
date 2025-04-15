@@ -14,18 +14,18 @@ public class IceGun : MonoBehaviour
 {
     [Header("Gun Settings")]
     public GameObject IceBulletPrefab;  // Prefab of the ice projectile to instantiate
-    public float IceDamage = 10f;         // Damage dealt by the projectile (passed to the bullet)
+    
     public float shootingCooldown = 1f;   // Cooldown in seconds before next shot
 
     [Header("Bullet Settings")]
     public float bulletForce = 500f;      // Force applied to the projectile
 
-    // Flag to ensure shooting only happens after cooldown
+    
     private bool canShoot = true;
 
     private void Update()
     {
-        // Listen for mouse input (left click) and check if gun is ready to fire
+        
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
             Shoot();
@@ -38,18 +38,11 @@ public class IceGun : MonoBehaviour
         
         GameObject iceBullet = Instantiate(IceBulletPrefab, transform.position, transform.rotation);
 
-        
-        IceBullet bulletScript = iceBullet.GetComponent<IceBullet>();
-        if (bulletScript != null)
-        {
-            bulletScript.damage = IceDamage;
-        }
-
-        // Apply force to the bullet if it has a Rigidbody component
+        // Apply force to the bullet with RigidBody
         Rigidbody rb = iceBullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            // Add a force in the forward direction of this gun
+            // Addds Force forwards
             rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
         }
         else

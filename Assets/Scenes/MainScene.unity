@@ -506,6 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 457630163}
   - component: {fileID: 457630164}
+  - component: {fileID: 457630165}
   m_Layer: 0
   m_Name: IceGun
   m_TagString: Untagged
@@ -541,9 +542,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IceBulletPrefab: {fileID: 406313899035418183, guid: 2f1378de48c3d8448ad1830520cdeef5, type: 3}
-  IceDamage: 10
   shootingCooldown: 1
-  bulletForce: 500
+  bulletForce: 10
+--- !u!114 &457630165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457630162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723960da4b0b68a4eb417651d6ba5664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pos: {fileID: 152683510}
 --- !u!1001 &655637130
 PrefabInstance:
   m_ObjectHideFlags: 0
