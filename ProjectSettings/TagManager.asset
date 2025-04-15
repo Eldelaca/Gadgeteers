@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - PlayerEyes
-  - Coin
+  - Terrain
+  - AI
+  - Water
   - Collect
   layers:
   - Default
