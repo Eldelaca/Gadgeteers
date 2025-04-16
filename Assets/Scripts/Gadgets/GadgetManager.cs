@@ -15,7 +15,7 @@ namespace Gadgets
 
         [SerializeField] private Transform playerHandle;
         
-        private int _equippedID;
+        public int _equippedID;
         private GameObject _equippedGadget;
         
         public void OnEquip(int equipID)

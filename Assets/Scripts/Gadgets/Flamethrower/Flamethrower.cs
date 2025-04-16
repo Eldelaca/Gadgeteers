@@ -14,7 +14,7 @@ public class Flamethrower : MonoBehaviour
     public GameObject flamethrowerCollider;
 
 
-    // Keeps track of enemies/obstacles in range
+    // Keeps track of enemies/obstacles in a range
     private HashSet<GameObject> enemiesInRange = new HashSet<GameObject>();
 
     private void OnTriggerEnter(Collider other)
