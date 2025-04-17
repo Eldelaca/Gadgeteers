@@ -8,6 +8,8 @@ namespace Gadgets
         [Header("Gadget ID")]
         [Tooltip("Gadgets Unique ID")]
         public int gadgetId;
+        [Tooltip("Gadget Name for UI")]
+        public string gadgetName;
         
         [Header("Gadget Damage Values")]
         [Tooltip("How much damage the gadget deals per tick, set to 0 if redundant")]
@@ -31,9 +33,13 @@ namespace Gadgets
         [Tooltip("How many units this gadgets projectiles can travel before disappearing")]
         public float range;
 
-        [Header("Boots Exclusive Values")]
+        [Header("Movement Exclusive Values")]
         [Tooltip("How many additional jumps do the boots grant you, 1 is a double jump, 2 a triple, etc. Set to 0 if not boots")]
-        public int additionalJumpCount; 
+        public int additionalJumpCount;
+        [Tooltip("How much added jump force to the player jumps")]
+        public float additionalJumpForce;
+        [Tooltip("How much added jump force to the player jumps")]
+        public float gravityMultiplier;
         
         [Header("UI Values")]
         [Tooltip("UI Sprite Storage")]

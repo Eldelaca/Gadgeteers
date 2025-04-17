@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: RocketBootsValues
   m_EditorClassIdentifier: 
   gadgetId: 4
+  gadgetName: Rocket Boots
   gadgetDamageTick: 0
   gadgetMaxDamage: 0
   gadgetDamageInstances: 0
   gadgetDamageInstanceCooldown: 0
   useCooldown: 0
   useDuration: 0
-  additionalJumpCount: 0
+  range: 0
+  additionalJumpCount: 1
+  additionalJumpForce: 1
+  gravityMultiplier: 0
   gadgetIcon: {fileID: 0}

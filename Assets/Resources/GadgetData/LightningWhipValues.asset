@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: LightningWhipValues
   m_EditorClassIdentifier: 
   gadgetId: 3
+  gadgetName: Lightning Whip
   gadgetDamageTick: 10
   gadgetMaxDamage: 10
   gadgetDamageInstances: 1
   gadgetDamageInstanceCooldown: 0
   useCooldown: 0
   useDuration: 5
+  range: 0
+  additionalJumpCount: 0
+  additionalJumpForce: 0
+  gravityMultiplier: 0
   gadgetIcon: {fileID: 0}
