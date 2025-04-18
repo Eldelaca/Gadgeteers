@@ -437,8 +437,12 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2471302876458023122, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.466
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471302876458023122, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.099
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4275395677778635381, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
       propertyPath: m_Name
@@ -596,7 +600,8 @@ MonoBehaviour:
   lightningWhipEquipped: 0
   iceBlasterEquip: 0
   playerHandle: {fileID: 387133844}
-  _equippedID: 0
+  equippedID: 0
+  equippedGadget: {fileID: 0}
 --- !u!1 &2022941609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4275395677778635381, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
@@ -614,8 +619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc2b1123a619d448dc1093687bd618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gadgetManager: {fileID: 1517872142}
-  playerHandle: {fileID: 387133844}
+  flamethrower: {fileID: 0}
+  iceBlaster: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

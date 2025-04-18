@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2cb204cded85384ba378e903d56b0a3, type: 3}
-  m_Name: RocketBootsValues
+  m_Name: IceGunStats
   m_EditorClassIdentifier: 
-  gadgetId: 4
-  gadgetName: Rocket Boots
+  gadgetId: 2
+  gadgetName: Ice Gun
   gadgetDamageTick: 0
-  gadgetMaxDamage: 0
+  gadgetMaxDamage: 10
   gadgetDamageInstances: 0
   gadgetDamageInstanceCooldown: 0
-  useCooldown: 0
-  useDuration: 0
-  range: 0
-  additionalJumpCount: 1
-  additionalJumpForce: 1
+  useCooldown: 1.5
+  useDuration: 3
+  range: 10
+  additionalJumpCount: 0
+  additionalJumpForce: 0
   gravityMultiplier: 0
   gadgetIcon: {fileID: 0}

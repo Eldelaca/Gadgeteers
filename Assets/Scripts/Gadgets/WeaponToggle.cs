@@ -1,73 +1,49 @@
-using Gadgets;
 using UnityEngine;
+using Gadgets; // Gadget Manager
+using Gadgets.BaseGadgets; // Sub Class from other scripts
 
-public class WeaponToggle : MonoBehaviour
+/// <summary>
+/// Exposes UI hooks to equip/unequip only the Flamethrower and Ice Blaster gadgets,
+/// retrieving the gadgetId directly from each gadget's ScriptableObject stats.
+/// Hook OnToggleFlamethrower and OnToggleIceBlaster up to your UI buttons.
+/// </summary>
+public class WeaponToggle : MonoBehaviour 
 {
-    public GadgetManager gadgetManager;
+    [Header("Drag & drop gadget components here (must have a Stats SO assigned)")]
+    public Flamethrower flamethrower;
+    public IceGun iceBlaster;
 
-    private GameObject currentFlamethrower;
-    private GameObject currentIceGun;
-
-    public Transform playerHandle; 
-
-    private void Update()
+    /// <summary>
+    /// UI handler: toggles the Flamethrower gadget via its own GadgetStats SO.
+    /// </summary>
+    public void OnToggleFlamethrower()
     {
-        // === Flamethrower ===
-        if (gadgetManager.flamethrowerEquipped)
+        if (flamethrower == null || flamethrower.Flamestats == null) return;
+        ToggleGadget(flamethrower, flamethrower.Flamestats.gadgetId);
+    }
+
+    /// <summary>
+    /// UI handler: toggles the Ice Blaster gadget via its own GadgetStats SO.
+    /// </summary>
+    public void OnToggleIceBlaster()
+    {
+        if (iceBlaster == null || iceBlaster.IceGunStats == null) return;
+        ToggleGadget(iceBlaster, iceBlaster.IceGunStats.gadgetId);
+    }
+
+    /// <summary>
+    /// Core toggle logic using IGadget interface and SO data.
+    /// If it's already equipped, calls UnEquip(); otherwise Equip().
+    /// </summary>
+    private void ToggleGadget(IGadget gadget, int gadgetId)
+    {
+        if (GadgetManager.Instance.equippedID == gadgetId)
         {
-            if (currentFlamethrower == null)
-            {
-                gadgetManager._equippedID = 1;
-
-                currentFlamethrower = Instantiate(gadgetManager.baseGadgets[0], playerHandle.position, playerHandle.rotation);
-                currentFlamethrower.transform.parent = playerHandle;
-                currentFlamethrower.SetActive(false); // Start inactive
-                Debug.Log("Flamethrower instantiated.");
-            }
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                currentFlamethrower.SetActive(true);
-                Debug.Log("Flamethrower activated.");
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                currentFlamethrower.SetActive(false);
-                Debug.Log("Flamethrower deactivated.");
-            }
+            gadget.UnEquip();
         }
         else
         {
-            if (currentFlamethrower != null)
-            {
-                Destroy(currentFlamethrower);
-                currentFlamethrower = null;
-                Debug.Log("Flamethrower destroyed.");
-            }
-        }
-
-        // === Ice Gun ===
-        if (gadgetManager.iceBlasterEquip)
-        {
-            if (currentIceGun == null)
-            {
-                gadgetManager._equippedID = 2;
-
-                currentIceGun = Instantiate(gadgetManager.baseGadgets[1], playerHandle.position, playerHandle.rotation);
-                currentIceGun.transform.parent = playerHandle;
-                Debug.Log("Ice Gun instantiated.");
-            }
-
-            currentIceGun.SetActive(true);
-        }
-        else
-        {
-            if (currentIceGun != null)
-            {
-                Destroy(currentIceGun);
-                currentIceGun = null;
-                Debug.Log("Ice Gun destroyed.");
-            }
+            gadget.Equip();
         }
     }
 }
