@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gadgets
 {
-    public class GadgetManager : MonoBehaviour
+    public class  GadgetManager : MonoBehaviour
     {
         [Header("References")] [Tooltip("Please make sure the order of this array correlates to the order of gadget IDs in the scriptableObjects class")]
         public GameObject[] baseGadgets;
@@ -15,33 +18,84 @@ namespace Gadgets
 
         [SerializeField] private Transform playerHandle;
         
-        public int _equippedID;
-        private GameObject _equippedGadget;
-        
+        public int equippedID;
+        public GameObject equippedGadget;
+        private List<IGadget> _gadgetObjects;
+        public static GadgetManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Debug.LogError("Found more than one gadget manager! Destroyed the Imposter");
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            _gadgetObjects = FindAllGadgetObjects();
+        }
+
+        private void OnSceneUnloaded(Scene scene)
+        {
+            // Empty
+        }
+
         public void OnEquip(int equipID)
         {
             if (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
             {
-                if (equipID == _equippedID)
-                {
-                    Debug.Log("You already have that equipped");
-                    return;
-                }
-                Destroy(_equippedGadget);
+                Debug.Log("You already have an item equipped");
+                return;
             }
             
             GameObject selectedGadget = baseGadgets[equipID - 1];
             
-            _equippedGadget = Instantiate(selectedGadget, playerHandle.position, playerHandle.rotation);
-            _equippedGadget.transform.parent = playerHandle;
+            equippedGadget = Instantiate(selectedGadget, playerHandle.position, playerHandle.rotation);
+            equippedGadget.transform.parent = playerHandle;
             
-            _equippedID = equipID;
+            equippedID = equipID;
         }
-
+        
         public void OnUnEquip()
         {
-            Destroy(_equippedGadget);
-            _equippedID = 0;
+            if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0)
+            {
+                Debug.Log("You have no item eqipped");
+                return;
+            }
+            
+            foreach (IGadget gadgetObject in _gadgetObjects)
+            {
+                gadgetObject.UnEquip();
+            }
+            
+            Destroy(equippedGadget);
+            equippedID = 0;
+            
+        }
+
+        private List<IGadget> FindAllGadgetObjects()
+        {
+            IEnumerable<IGadget> gadgetObjects =
+                FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.InstanceID).OfType<IGadget>();
+            
+            return new List<IGadget>(gadgetObjects);
         }
     }
 }

@@ -14,7 +14,8 @@ namespace Player.PlayerCharacterController
         public bool InGroundedState()
         {
             return CurrentPlayerMovementState == PlayerMovementState.Idling || 
-                   CurrentPlayerMovementState == PlayerMovementState.Walking || 
+                   CurrentPlayerMovementState == PlayerMovementState.Walking ||
+                   CurrentPlayerMovementState == PlayerMovementState.Running || 
                    CurrentPlayerMovementState == PlayerMovementState.Sprinting;
         }
     }
@@ -23,9 +24,10 @@ namespace Player.PlayerCharacterController
     {
         Idling = 0,
         Walking = 1,
-        Sprinting = 2,
-        Strafing = 3,
-        Falling = 4,
-        Jumping = 5,
+        Running = 2,
+        Sprinting = 3,
+        Strafing = 4,
+        Falling = 5,
+        Jumping = 6,
     }
 }

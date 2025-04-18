@@ -40,13 +40,17 @@ namespace Player.PlayerCharacterController
         private void UpdateAnimationState()
         {
             bool isSprinting = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
+            bool isRunning = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Running;
             bool isJumping = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Jumping;
             bool isIdling = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Idling;
             bool isFalling = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Falling;
             bool isGrounded = _playerStateMachine.InGroundedState();
             
-            Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * 1.5f : _playerLocomotionInput.MovementInput;
-            _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed *Time.deltaTime);
+            Vector2 inputTarget = isSprinting ? _playerLocomotionInput.MovementInput * 1.5f 
+                : isRunning  ? _playerLocomotionInput.MovementInput * 1f : 
+                _playerLocomotionInput.MovementInput * 0.5f;
+            
+            _currentBlendInput = Vector3.Lerp(_currentBlendInput, inputTarget, locomotionBlendSpeed);
                         
             animator.SetBool(IsRotatingToTargetHash, _playerMovement.IsRotatingToTarget);
             animator.SetBool(IsJumpingHash, isJumping);
