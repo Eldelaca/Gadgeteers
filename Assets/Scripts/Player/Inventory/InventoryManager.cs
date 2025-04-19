@@ -49,19 +49,17 @@ namespace Player.Inventory
                     break;
             }
             
-            GadgetManager.Instance.OnEquip(_pushedGadgetID);
+            // GadgetManager.Instance.OnEquip(_pushedGadgetID);
 
             foreach (ItemSlot inventorySlot in inventorySlots)
             {
-                if (!inventorySlot.slotFull)
-                {
-                    inventorySlot.FillSlot(_pushedGadgetID, _pushedGadgetName, _pushedGadgetSprite);
-                    return;
-                }
+                if (inventorySlot.slotFull) continue;
+                inventorySlot.FillSlot(_pushedGadgetID, _pushedGadgetName, _pushedGadgetSprite);
+                return;
             }
-
-
         }
+        
+        
 
         public void AddCollectible()
         {

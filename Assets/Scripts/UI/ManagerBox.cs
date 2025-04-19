@@ -27,12 +27,7 @@ namespace UI
             if (uniqueID != _uniqueId) return;
 
             Destroy(gameObject);
-            // StartCoroutine(ScaleOverTime());
-        }
 
-        /*private IEnumerator ScaleOverTime()
-        {
-            
-        }*/
+        }
     }
 }
