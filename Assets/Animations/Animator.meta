@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art.meta
+guid: ffa3fc93dd2fcbf46975ead2bcabab13
+========
 guid: 3964a73b901ac8c4d991ea6923c5d7b6
+>>>>>>>> origin/NewAlbus:Assets/Animations/Animator.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

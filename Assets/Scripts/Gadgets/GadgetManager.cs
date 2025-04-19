@@ -23,6 +23,13 @@ namespace Gadgets
         private List<IGadget> _gadgetObjects;
         public static GadgetManager Instance { get; private set; }
 
+
+        private void Start()
+        {
+            OnEquip(1); // This will equip the gadget with ID 1 at scene start
+        }
+
+
         private void Awake()
         {
             if (Instance != null)
