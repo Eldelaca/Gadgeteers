@@ -23,12 +23,19 @@ namespace Gadgets
         private List<IGadget> _gadgetObjects;
         public static GadgetManager Instance { get; private set; }
 
+
+        private void Start()
+        {
+            OnEquip(1); // This will equip the gadget with ID 1 at scene start
+        }
+
+
         private void Awake()
         {
             if (Instance != null)
             {
                 Debug.LogError("Found more than one gadget manager! Destroyed the Imposter");
-                Destroy(this.gameObject);
+                Destroy(gameObject);
                 return;
             }
             Instance = this;
@@ -74,9 +81,15 @@ namespace Gadgets
         
         public void OnUnEquip()
         {
-            foreach (IGadget dataPersistentObj in _gadgetObjects)
+            if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0)
             {
-                dataPersistentObj.UnEquip();
+                Debug.Log("You have no item eqipped");
+                return;
+            }
+            
+            foreach (IGadget gadgetObject in _gadgetObjects)
+            {
+                gadgetObject.UnEquip();
             }
             
             Destroy(equippedGadget);
