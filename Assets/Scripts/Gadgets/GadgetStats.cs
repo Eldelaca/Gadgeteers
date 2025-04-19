@@ -10,6 +10,8 @@ namespace Gadgets
         public int gadgetId;
         [Tooltip("Gadget Name for UI")]
         public string gadgetName;
+        [Tooltip("Gadget Description for UI")]
+        public string gadgetDescription;
         
         [Header("Gadget Damage Values")]
         [Tooltip("How much damage the gadget deals per tick, set to 0 if redundant")]

@@ -70,13 +70,18 @@ namespace Gadgets
             equippedGadget.transform.parent = playerHandle;
             
             equippedID = equipID;
+            
+            foreach (IGadget gadgetObject in _gadgetObjects)
+            {
+                gadgetObject.Equip();
+            }
         }
         
         public void OnUnEquip()
         {
             if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0)
             {
-                Debug.Log("You have no item eqipped");
+                Debug.Log("You have no item equipped");
                 return;
             }
             
@@ -87,6 +92,7 @@ namespace Gadgets
             
             Destroy(equippedGadget);
             equippedID = 0;
+            
             
         }
 

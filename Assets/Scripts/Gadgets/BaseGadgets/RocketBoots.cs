@@ -27,19 +27,8 @@ namespace Gadgets.BaseGadgets
         
         public void Equip()
         {
-            if (GadgetManager.Instance.equippedID == stats.gadgetId)
-            {
-                Debug.Log("Already Equipped Boots");
-                return;
-            }
-            
-            if (GadgetManager.Instance.equippedID != stats.gadgetId && GadgetManager.Instance.equippedID != 0 )
-            {
-                Debug.Log("Other Item already present, replacing now");
-                GadgetManager.Instance.OnUnEquip();
-            }
-            
-            GadgetManager.Instance.OnEquip(stats.gadgetId);
+            if (GadgetManager.Instance.equippedID != stats.gadgetId) return;
+
             playerMovement.JumpModification(stats.additionalJumpCount, stats.additionalJumpForce);
             GadgetManager.Instance.bootsEquipped = true; // only for debug, remove on final iteration
         }
