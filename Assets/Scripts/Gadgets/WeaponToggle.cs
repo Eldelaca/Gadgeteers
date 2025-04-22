@@ -4,9 +4,10 @@ using Gadgets.BaseGadgets; // Sub Class from other scripts
 using Gadgets.ComboGadgets; // Sub Class from other scripts
 
 /// <summary>
-/// Exposes UI hooks to equip/unequip only the Flamethrower and Ice Blaster gadgets,
-/// retrieving the gadgetId directly from each gadget's ScriptableObject stats.
-/// Hook OnToggleFlamethrower and OnToggleIceBlaster up to your UI buttons.
+/// This Code Acts more so for the UI
+/// Probably will change when UI is set up
+/// this Toggles from the Ui instead of the individual weapons
+/// More so like a list
 /// </summary>
 public class WeaponToggle : MonoBehaviour 
 {
@@ -36,7 +37,7 @@ public class WeaponToggle : MonoBehaviour
     }
 
     /// <summary>
-    /// Core toggle logic using IGadget interface and SO data.
+    /// Toggle logic using IGadget interface and SO data.
     /// If it's already equipped, calls UnEquip(); otherwise Equip().
     /// </summary>
     private void ToggleGadget(IGadget gadget, int gadgetId)

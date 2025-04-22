@@ -3,6 +3,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Changes where added to the OnEquip() method [Lines 81+]
+// In case this gets changed....
+
 namespace Gadgets
 {
     public class  GadgetManager : MonoBehaviour

@@ -2,6 +2,13 @@
 using UnityEngine;
 using Gadgets;  // for GadgetStats
 
+
+/// <summary>
+/// This Code can be interchangable to fit any other Storms we have Ice/Fire/Electric/Wind(Normal)
+/// </summary>
+
+
+
 namespace Gadgets.ComboGadgets
 {
     public class TornadoBehavior : MonoBehaviour
@@ -21,7 +28,7 @@ namespace Gadgets.ComboGadgets
 
         void Update()
         {
-            // move forward in local space
+            // Moves the Object foward
             transform.Translate(Vector3.forward * stats.range * Time.deltaTime, Space.Self);
 
             // lifespan countdown
@@ -30,6 +37,8 @@ namespace Gadgets.ComboGadgets
                 Destroy(gameObject);
         }
 
+
+        // This is where what happens in the level
         void OnTriggerStay(Collider other)
         {
             if (!other.CompareTag("AI")) return;
