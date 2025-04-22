@@ -1758,6 +1758,7 @@ GameObject:
   - component: {fileID: 7953793162366261401}
   - component: {fileID: 5527440968088781380}
   - component: {fileID: 4159612906766319384}
+  - component: {fileID: 5982979073533755757}
   m_Layer: 0
   m_Name: First Slot
   m_TagString: Untagged
@@ -1865,7 +1866,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5527440968088781380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5982979073533755757}
+        m_TargetAssemblyTypeName: UI.Inventory.CombineSlot, Assembly-CSharp
+        m_MethodName: ClearSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5982979073533755757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7407916309758060608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5642768220718ca4d8799628f6af4ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 0
+  defaultSprite: {fileID: 0}
 --- !u!1 &7745092801618201750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2288,7 @@ GameObject:
   - component: {fileID: 2266218861507607733}
   - component: {fileID: 3477369785735644997}
   - component: {fileID: 7590522491499752630}
+  - component: {fileID: 4461059126927440531}
   m_Layer: 0
   m_Name: Second Slot
   m_TagString: Untagged
@@ -2368,7 +2396,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3477369785735644997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4461059126927440531}
+        m_TargetAssemblyTypeName: UI.Inventory.CombineSlot, Assembly-CSharp
+        m_MethodName: ClearSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4461059126927440531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920478685221971234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5642768220718ca4d8799628f6af4ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 0
+  defaultSprite: {fileID: 0}
 --- !u!1 &9032718261781441822
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,6 +3944,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GadgetSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8137858025692690176, guid: 39187edc5594f2b4f9294b2b7475166b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137858025692690176, guid: 39187edc5594f2b4f9294b2b7475166b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3267ace794d1b61478ebe86fe18925b1, type: 3}
     - target: {fileID: 8678003431284482391, guid: 39187edc5594f2b4f9294b2b7475166b, type: 3}
       propertyPath: m_IsActive
       value: 1

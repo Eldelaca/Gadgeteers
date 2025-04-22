@@ -65,10 +65,20 @@ namespace Gadgets
 
         public void OnEquip(int equipID)
         {
-            if (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
+            switch (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
             {
-                Debug.Log("You already have an item equipped");
-                return;
+                case true:
+                    if (equippedID == equipID)
+                    {
+                        Debug.Log("You already have that equipped");
+                        return;
+                    }
+                    Debug.Log("Another Gadget is equipped, unequipped current gadget");
+                    equippedID = equipID;
+                    OnUnEquip();
+                    break;
+                case false:
+                    break;
             }
             
             GameObject selectedGadget = baseGadgets[equipID - 1];
