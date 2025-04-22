@@ -26,7 +26,7 @@ namespace Gadgets
 
         private void Start()
         {
-            OnEquip(1); // This will equip the gadget with ID 1 at scene start
+            OnEquip(3); // This will equip the gadget with ID 1 at scene start
         }
 
 
@@ -75,7 +75,24 @@ namespace Gadgets
             
             equippedGadget = Instantiate(selectedGadget, playerHandle.position, playerHandle.rotation);
             equippedGadget.transform.parent = playerHandle;
-            
+
+
+            // This just allows the script to just check if the gadget has been equipped
+            // Grabs the Equip from that object and equips it
+            // Unlike in this method where it just instantiates the object itself the gadget itself 
+
+            IGadget gadgetScript = equippedGadget.GetComponent<IGadget>(); // Get the gadget script
+
+            if (gadgetScript != null)
+            {
+                gadgetScript.Equip(); // Call Equip() for this gadget
+            }
+            else
+            {
+                Debug.LogError("The gadget does not have the IGadget Component");
+            }
+
+
             equippedID = equipID;
         }
         

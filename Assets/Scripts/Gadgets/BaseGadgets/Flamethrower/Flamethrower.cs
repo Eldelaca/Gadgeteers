@@ -67,6 +67,9 @@ namespace Gadgets.BaseGadgets
 
             GadgetManager.Instance.OnEquip(Flamestats.gadgetId);
             flamethrowerCollider.SetActive(true);
+
+            GadgetManager.Instance.flamethrowerEquipped = true;  
+
         }
 
         public void UnEquip()
@@ -75,6 +78,9 @@ namespace Gadgets.BaseGadgets
 
             flamethrowerCollider.SetActive(false);
             GadgetManager.Instance.OnUnEquip();
+
+            GadgetManager.Instance.flamethrowerEquipped = false;  
+
         }
 
         private void OnTriggerEnter(Collider other)
