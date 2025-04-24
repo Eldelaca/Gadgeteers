@@ -26,7 +26,7 @@ namespace Gadgets
         private List<IGadget> _gadgetObjects;
         public static GadgetManager Instance { get; private set; }
 
-
+        // Not needed just for self testing
         private void Start()
         {
             OnEquip(3); // This will equip the gadget with ID 1 at scene start
