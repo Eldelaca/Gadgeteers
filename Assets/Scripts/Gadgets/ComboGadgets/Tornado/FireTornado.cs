@@ -7,7 +7,6 @@ using System.Collections;
 /// <summary>
 /// This Code can be interchangable as it uses the same logic for spawning torndaos/ Storms
 /// Responsible for handling the spawns of the Tornado GameObject
-/// Make Sure in Gadget Manager Script it grabs the equip method to check if it is equipped or not checking 
 /// </summary>
 
 namespace Gadgets.ComboGadgets
@@ -18,12 +17,11 @@ namespace Gadgets.ComboGadgets
         public GadgetStats tornadoStats;    
         public GameObject tornadoPrefab;    
 
-        bool isEquipped = false;
         bool isOnCooldown = false;
 
         void Update()
         {
-            if (!isEquipped || isOnCooldown) return;
+            if (GadgetManager.Instance.equippedID != tornadoStats.gadgetId || isOnCooldown) return;
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -82,7 +80,7 @@ namespace Gadgets.ComboGadgets
                 GadgetManager.Instance.OnUnEquip();
 
             GadgetManager.Instance.OnEquip(tornadoStats.gadgetId);
-            isEquipped = true;
+
             GadgetManager.Instance.flamethrowerEquipped = true;  
             GadgetManager.Instance.lightningWhipEquipped = true; 
 
@@ -94,7 +92,6 @@ namespace Gadgets.ComboGadgets
             if (GadgetManager.Instance.equippedID != tornadoStats.gadgetId) return;
 
             GadgetManager.Instance.OnUnEquip();
-            isEquipped = false;
 
             GadgetManager.Instance.flamethrowerEquipped = false;
             GadgetManager.Instance.lightningWhipEquipped = false;

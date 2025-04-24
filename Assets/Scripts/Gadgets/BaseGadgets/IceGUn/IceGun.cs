@@ -24,7 +24,7 @@ namespace Gadgets.BaseGadgets
 
         private void Update()
         {
-            if (!isEquipped) return;  // Ensure that only equipped weapons can shoot
+            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId || !canShoot) return;  // Ensure that only equipped weapons can shoot
 
             
             if (Input.GetMouseButtonDown(0) && canShoot)
@@ -81,7 +81,7 @@ namespace Gadgets.BaseGadgets
             isEquipped = true;  // Mark the gun as equipped
 
             GadgetManager.Instance.iceBlasterEquip = true;
-        }
+        }   
 
         public void UnEquip()
         {

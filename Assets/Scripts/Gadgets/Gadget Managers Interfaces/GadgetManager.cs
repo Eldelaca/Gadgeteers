@@ -80,10 +80,10 @@ namespace Gadgets
             equippedGadget.transform.parent = playerHandle;
 
 
-            // This just allows the script to just check if the gadget has been equipped
+            // This just allows the script to just check if the gadget has been equipped for testing
             // Grabs the Equip from that object and equips it
-            // Unlike in this method where it just instantiates the object itself the gadget itself 
-
+            // Checking if the weapon is or not equipped
+            /*
             IGadget gadgetScript = equippedGadget.GetComponent<IGadget>(); // Get the gadget script
 
             if (gadgetScript != null)
@@ -94,7 +94,7 @@ namespace Gadgets
             {
                 Debug.LogError("The gadget does not have the IGadget Component");
             }
-
+            */
 
             equippedID = equipID;
         }
