@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gadgetId: 4
   gadgetName: Rocket Boots
-  gadgetDescription: Rocket Boots, for that extra mile on the jump
+  gadgetDescription: For that extra mile on the jump
   gadgetDamageTick: 0
   gadgetMaxDamage: 0
   gadgetDamageInstances: 0

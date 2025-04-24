@@ -1,3 +1,4 @@
+using Gadgets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -20,19 +21,27 @@ namespace UI.Inventory
 
         private int _gadgetID;
         private Sprite _gadgetSprite;
+        private string _gadgetName, _gadgetDescription;
+        private bool _isCombo;
+        private GadgetStats _inputGadget1, _inputGadget2;
 
         
         public bool slotFull;
         
-        public void FillSlot(int gadgetId, string gadgetName, Sprite gadgetSprite)
+        public void FillSlot(int gadgetId, string gadgetName, Sprite gadgetSprite, string gadgetDescription, bool isCombo, GadgetStats input1, GadgetStats input2)
         {
             _gadgetID = gadgetId;
             _gadgetSprite = gadgetSprite;
+            _gadgetDescription = gadgetDescription;
+            
+            _isCombo = isCombo;
+            
+            _inputGadget1 = input1;
+            _inputGadget2 = input2;
             
             slotFull = true;
             
             nameText.text = gadgetName;
-            nameText.enabled = true;
             image.sprite = gadgetSprite;
         }
 
@@ -45,7 +54,7 @@ namespace UI.Inventory
             popUp.SetActive(true);
             popUp.transform.position = image.transform.position;
 
-            popUpWindowScript.OnPopUpOpen(_gadgetID, _gadgetSprite);
+            popUpWindowScript.OnPopUpOpen(_gadgetID, _gadgetSprite, _gadgetName, _gadgetDescription, _isCombo, _inputGadget1, _inputGadget2);
 
         }
         
@@ -59,7 +68,6 @@ namespace UI.Inventory
         {
             if (gadgetID != _gadgetID) return;
             
-            nameText.text = "";
             nameText.enabled = false;
             image.sprite = defaultSprite;
             _gadgetID = 0;

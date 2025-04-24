@@ -7,8 +7,10 @@ namespace Player.Inventory
     public class InventoryManager : MonoBehaviour
     {
         private int _pushedGadgetID;
-        private string _pushedGadgetName;
+        private string _pushedGadgetName, _pushedGadgetDescription;
         private Sprite _pushedGadgetSprite;
+        private GadgetStats _inputGadget1, _inputGadget2;
+        
         
         public ItemSlot[] inventorySlots;
 
@@ -28,44 +30,24 @@ namespace Player.Inventory
             Instance = this;
         }
 
-        public void AddGadget(int gadgetID, string gadgetName, Sprite gadgetSprite, string gadgetDescription)
+        public void AddGadget(int gadgetID, string gadgetName, Sprite gadgetSprite, string gadgetDescription, bool isCombo, GadgetStats inputGadget1, GadgetStats inputGadget2)
         {
             _pushedGadgetID = gadgetID;
             _pushedGadgetName = gadgetName;
             _pushedGadgetSprite = gadgetSprite;
-            
-            switch (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
-            {
-                case true when _pushedGadgetID != GadgetManager.Instance.equippedID:
-                    GadgetManager.Instance.OnUnEquip();
-                    break;
-                case true when _pushedGadgetID == GadgetManager.Instance.equippedID:
-                    Debug.Log("That gadget is already equipped");
-                    return;
-                case false:
-                    break;
-                default:
-                    Debug.LogError("Something has gone very wrong in the switch statement");
-                    break;
-            }
-            
-            // GadgetManager.Instance.OnEquip(_pushedGadgetID);
+            _pushedGadgetDescription = gadgetDescription;
 
             foreach (ItemSlot inventorySlot in inventorySlots)
             {
                 if (inventorySlot.slotFull) continue;
-                inventorySlot.FillSlot(_pushedGadgetID, _pushedGadgetName, _pushedGadgetSprite);
+                inventorySlot.FillSlot(_pushedGadgetID, _pushedGadgetName, _pushedGadgetSprite, _pushedGadgetDescription, isCombo, inputGadget1, inputGadget2);
                 return;
             }
         }
         
-        
-
         public void AddCollectible()
         {
             collectibleCount++;
         }
-        
-        // private void EquipGadget()
     }
 }

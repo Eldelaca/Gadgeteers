@@ -22,14 +22,7 @@ namespace Gadgets
         public GameObject equippedGadget;
         private List<IGadget> _gadgetObjects;
         public static GadgetManager Instance { get; private set; }
-
-
-        private void Start()
-        {
-            OnEquip(1); // This will equip the gadget with ID 1 at scene start
-        }
-
-
+        
         private void Awake()
         {
             if (Instance != null)
@@ -60,7 +53,7 @@ namespace Gadgets
 
         private void OnSceneUnloaded(Scene scene)
         {
-            // Empty
+            // Leave Empty, just for loading in some Lists ^_^
         }
 
         public void OnEquip(int equipID)
@@ -101,16 +94,12 @@ namespace Gadgets
                 Debug.Log("You have no item equipped");
                 return;
             }
-            
             foreach (IGadget gadgetObject in _gadgetObjects)
             {
                 gadgetObject.UnEquip();
             }
-            
             Destroy(equippedGadget);
             equippedID = 0;
-            
-            
         }
 
         private List<IGadget> FindAllGadgetObjects()

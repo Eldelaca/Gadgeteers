@@ -1,4 +1,7 @@
+using Gadgets;
+using Player.Inventory;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Inventory
@@ -11,19 +14,32 @@ namespace UI.Inventory
         
         private Image _image;
         private Button _button;
-        private int _storedID;
+        public int storedID;
+        private string _gadgetName, _gadgetDescription;
+        private Sprite _gadgetSprite;
+        private GadgetStats _inputGadget1, _inputGadget2;
+
+        private bool _isCombo;
 
         private void OnEnable()
         {
             _image = GetComponent<Image>();
             _button = GetComponent<Button>();
-            _image.sprite = defaultSprite;
+            _image.sprite = null;
             _button.interactable = false;
         }
         
-        public void AddToSlot(int gadgetID, Sprite gadgetSprite)
+        public void AddToSlot(int gadgetID, Sprite gadgetSprite, string gadgetName, string gadgetDescription, bool isCombo, GadgetStats inputGadget1, GadgetStats inputGadget2)
         {
-            _storedID = gadgetID;
+            storedID = gadgetID;
+            _gadgetName = gadgetName;
+            _gadgetDescription = gadgetDescription;
+            _gadgetSprite = gadgetSprite;
+            
+            _isCombo = isCombo;
+            
+            _inputGadget1 = inputGadget1;
+            _inputGadget2 = inputGadget2;
             
             _image = GetComponent<Image>();
             _button = GetComponent<Button>();
@@ -35,11 +51,22 @@ namespace UI.Inventory
 
         public void ClearSlot()
         {
-            _storedID = 0;
+            InventoryManager.Instance.AddGadget(storedID, _gadgetName, _gadgetSprite, _gadgetDescription, _isCombo, _inputGadget1, _inputGadget2);
+
+            storedID = 0;
             
-            _image.sprite = defaultSprite;
+            _image.sprite = null;
             _button.interactable = false;
             
+            isFull = false;
+        }
+
+        public void EmptySlot()
+        {
+            _image.sprite = null;
+            _button.interactable = false;
+            
+            isFull = false;
         }
     }
 }

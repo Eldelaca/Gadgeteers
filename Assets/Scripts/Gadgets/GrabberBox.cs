@@ -17,35 +17,16 @@ namespace Gadgets
 
         private void OnTriggerEnter(Collider other)
         {
-            /*playerMovement.enabled = false;
-            playerLocomotionInput.enabled = false;
-            playerAnimation.enabled = false;
-            characterController.enabled = false; */
-            
-            
             if (!other.CompareTag("Player")) return;
             
             AddGadgetToInventory();
             
             Destroy(gameObject);
-            // PlayNewGadgetAnimation();
         }
         
         private void AddGadgetToInventory()
         {
-            InventoryManager.Instance.AddGadget(stats.gadgetId, stats.gadgetName, stats.gadgetIcon, stats.gadgetDescription);
-        }
-
-        private void PlayNewGadgetAnimation()
-        {
-            StartCoroutine(GadgetAnimation());
-        }
-
-        private IEnumerator GadgetAnimation()
-        {
-            // For later
-            
-            yield return new WaitForSeconds(5f);
+            InventoryManager.Instance.AddGadget(stats.gadgetId, stats.gadgetName, stats.gadgetIcon, stats.gadgetDescription, false, null, null);
         }
     }
 }
