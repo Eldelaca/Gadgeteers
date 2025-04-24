@@ -14,17 +14,20 @@ namespace Gadgets.BaseGadgets
     public class IceGun : MonoBehaviour, IGadget
     {
         [Header("Gun Settings")]
-        public GadgetStats IceGunStats; // 
+        public GadgetStats IceGunStats; // For Gadget Stats
         public GameObject IceBulletPrefab;  // Prefab of the ice projectile to instantiate
-        private bool canShoot = true;
-        private bool isEquipped = false;
+
+        private bool canShoot = true; // Checks if it can shoot 
 
 
         
 
         private void Update()
         {
-            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId || !canShoot) return;  // Ensure that only equipped weapons can shoot
+            // Ensure that only equipped weapons can shoot
+            // Not really needed but just in case the game doesnt think this weapon is equipped
+            // Dont shoot
+            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId || !canShoot) return;
 
             
             if (Input.GetMouseButtonDown(0) && canShoot)
@@ -36,7 +39,8 @@ namespace Gadgets.BaseGadgets
         // Handles instantiation of the projectile and applies force
         private void Shoot()
         {
-            // Instantiate the ice bullet prefab at the gun's position and rotation
+            // Makes sure to spawn them in the position of the gun
+            // This can change if we have a model for the gun
             GameObject iceBullet = Instantiate(IceBulletPrefab, transform.position, transform.rotation);
 
             // Apply force to the bullet with RigidBody
@@ -78,7 +82,7 @@ namespace Gadgets.BaseGadgets
             }
 
             GadgetManager.Instance.OnEquip(IceGunStats.gadgetId);
-            isEquipped = true;  // Mark the gun as equipped
+            
 
             GadgetManager.Instance.iceBlasterEquip = true;
         }   
@@ -87,7 +91,6 @@ namespace Gadgets.BaseGadgets
         {
             if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId) return;
 
-            isEquipped = false;  // Mark the gun as unequipped
             GadgetManager.Instance.OnUnEquip();
 
             GadgetManager.Instance.iceBlasterEquip = false;

@@ -13,6 +13,8 @@ namespace Gadgets.BaseGadgets
 {
     public class Flamethrower : MonoBehaviour, IGadget
     {
+
+        // Variables for GameObjects its Connected to
         public GadgetStats Flamestats;
         public GameObject flamethrowerCollider;
 
@@ -23,13 +25,14 @@ namespace Gadgets.BaseGadgets
 
         private void Start()
         {
-            if (flamethrowerCollider != null)
+            // Checking if has Box Collider Component
+            if (flamethrowerCollider != null) 
             {
                 boxCollider = flamethrowerCollider.GetComponent<BoxCollider>();
                 if (boxCollider != null)
-                {   
-                    // Make sure it's off at start
-                    boxCollider.enabled = false; 
+                {
+                    // Make sure its off at start
+                    boxCollider.enabled = false;
                 }
                 else
                 {
@@ -41,7 +44,8 @@ namespace Gadgets.BaseGadgets
         private void Update()
         {
             if (boxCollider == null) return;
-
+            
+            // This doesnt Uses the old Input System
             if (Input.GetMouseButton(0))
             {
                 boxCollider.enabled = true;
@@ -52,37 +56,7 @@ namespace Gadgets.BaseGadgets
             }
         }
 
-        public void Equip()
-        {
-            if (GadgetManager.Instance.equippedID == Flamestats.gadgetId)
-            {
-                Debug.Log("Flamethrower already equipped");
-                return;
-            }
-
-            if (GadgetManager.Instance.equippedID != 0)
-            {
-                GadgetManager.Instance.OnUnEquip();
-            }
-
-            GadgetManager.Instance.OnEquip(Flamestats.gadgetId);
-            flamethrowerCollider.SetActive(true);
-
-            GadgetManager.Instance.flamethrowerEquipped = true;  
-
-        }
-
-        public void UnEquip()
-        {
-            if (GadgetManager.Instance.equippedID != Flamestats.gadgetId) return;
-
-            flamethrowerCollider.SetActive(false);
-            GadgetManager.Instance.OnUnEquip();
-
-            GadgetManager.Instance.flamethrowerEquipped = false;  
-
-        }
-
+        #region Action Methods
         private void OnTriggerEnter(Collider other)
         {
             // Process only if the collider belongs to an enemy tagged "AI"
@@ -127,5 +101,42 @@ namespace Gadgets.BaseGadgets
                 yield return new WaitForSeconds(Flamestats.gadgetDamageTick);
             }
         }
+        #endregion
+
+        #region Equip Methods
+        public void Equip()
+        {
+            if (GadgetManager.Instance.equippedID == Flamestats.gadgetId)
+            {
+                Debug.Log("Flamethrower already equipped");
+                return;
+            }
+
+            if (GadgetManager.Instance.equippedID != 0)
+            {
+                GadgetManager.Instance.OnUnEquip();
+            }
+
+            GadgetManager.Instance.OnEquip(Flamestats.gadgetId);
+            flamethrowerCollider.SetActive(true);
+
+            GadgetManager.Instance.flamethrowerEquipped = true;
+
+        }
+
+        public void UnEquip()
+        {
+            if (GadgetManager.Instance.equippedID != Flamestats.gadgetId) return;
+
+            flamethrowerCollider.SetActive(false);
+            GadgetManager.Instance.OnUnEquip();
+
+            GadgetManager.Instance.flamethrowerEquipped = false;
+
+        }
+
+        #endregion
     }
+
+
 }

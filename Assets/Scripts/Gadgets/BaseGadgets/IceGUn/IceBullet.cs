@@ -12,7 +12,9 @@ public class IceBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If the bullet collides with an enemy tagged "AI"
+        // If the bullet collides into enemy tagged "AI"
+        // CHANGE TAG FOR SPECIFIC OBSTACLES
+
         if (collision.collider.CompareTag("AI"))
         {
             aiHealth enemyHealth = collision.collider.GetComponent<aiHealth>();
@@ -21,7 +23,7 @@ public class IceBullet : MonoBehaviour
                 enemyHealth.TakeDamage(IceGunStats.gadgetMaxDamage);
             }
         }
-        // Destroy the projectile on collision with any object
+        // Destroy the projectile on collision with any object (If it hits the floor)
         Destroy(gameObject);
     }
 }

@@ -6,8 +6,8 @@ using Gadgets.ComboGadgets; // Sub Class from other scripts
 /// <summary>
 /// This Code Acts more so for the UI
 /// Probably will change when UI is set up
-/// this Toggles from the Ui instead of the individual weapons
-/// More so like a list
+/// this just implements Toggles from the Ui rather than from the scripts itself 
+/// Did this for self
 /// </summary>
 public class WeaponToggle : MonoBehaviour 
 {

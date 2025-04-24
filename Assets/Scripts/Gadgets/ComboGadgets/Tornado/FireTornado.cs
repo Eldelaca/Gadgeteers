@@ -35,14 +35,18 @@ namespace Gadgets.ComboGadgets
         // Code that spawns the Torando Prefab
         private void SpawnTornado()
         {
+            // DO NOT REMOVE
+            // Debugging purposes in case things fail
             try
             {
+
                 if (tornadoPrefab == null)
                 {
                     Debug.LogError("Tornado prefab is null!");
                     return;
                 }
-
+                
+                // Spawning the Tornado
                 Vector3 spawnPos = transform.position + transform.forward * 2f + Vector3.up;
                 var t = Instantiate(tornadoPrefab, spawnPos, Quaternion.LookRotation(transform.forward));
 
@@ -64,7 +68,6 @@ namespace Gadgets.ComboGadgets
             }
         }
 
-
         private IEnumerator CooldownCoroutine()
         {
             isOnCooldown = true;
@@ -72,7 +75,7 @@ namespace Gadgets.ComboGadgets
             isOnCooldown = false;
         }
 
-        // IGadget
+        // IGadget Ui stuff for Equipping Gadgets
         public void Equip()
         {
             if (GadgetManager.Instance.equippedID == tornadoStats.gadgetId) return;
@@ -81,6 +84,7 @@ namespace Gadgets.ComboGadgets
 
             GadgetManager.Instance.OnEquip(tornadoStats.gadgetId);
 
+            // This shi is just for checks thats it.....
             GadgetManager.Instance.flamethrowerEquipped = true;  
             GadgetManager.Instance.lightningWhipEquipped = true; 
 
@@ -93,6 +97,7 @@ namespace Gadgets.ComboGadgets
 
             GadgetManager.Instance.OnUnEquip();
 
+            // This shi is just for checks thats it.....
             GadgetManager.Instance.flamethrowerEquipped = false;
             GadgetManager.Instance.lightningWhipEquipped = false;
         }

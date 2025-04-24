@@ -5,6 +5,7 @@ using Gadgets;  // for GadgetStats
 
 /// <summary>
 /// This Code can be interchangable to fit any other Storms we have Ice/Fire/Electric/Wind(Normal)
+/// Uses the Gadget Stats Script
 /// </summary>
 
 
@@ -19,8 +20,9 @@ namespace Gadgets.ComboGadgets
         
         float lifeTimer;
 
+        // ****** NOTICE ******  // 
         // stats.gadgetDamageTick is being used as the lift force value 
-
+        // I know I dont know why im using it too....
         void Start()
         {
             lifeTimer = stats.useDuration;
