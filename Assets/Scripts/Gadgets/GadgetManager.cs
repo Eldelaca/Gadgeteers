@@ -101,6 +101,20 @@ namespace Gadgets
             equippedID = 0;
         }
 
+        public void OnGadgetUse()
+        {
+            if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0) return;
+
+            int[] unusableGadgetIDs = { 0, 4, 6 };
+
+
+            foreach (int unusableGadgetID in unusableGadgetIDs)
+            {
+                if (unusableGadgetID == equippedID) return;
+            }
+            
+        }
+
         private List<IGadget> FindAllGadgetObjects()
         {
             IEnumerable<IGadget> gadgetObjects =

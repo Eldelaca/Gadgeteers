@@ -1,4 +1,5 @@
 using System;
+using Gadgets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,7 +54,7 @@ namespace Player.PlayerCharacterController
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            // potentially needed, consult me if you're looking at this
+            if (context.performed) GadgetManager.Instance.OnGadgetUse();
         }
 
         public void OnFlash(InputAction.CallbackContext context)

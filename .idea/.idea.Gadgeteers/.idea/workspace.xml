@@ -14,6 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gadgets/BaseGadgets/LightningWhip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gadgets/ComboGadgetStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CraftingManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Inventory/CombineSlot.cs" root0="FORCE_HIGHLIGHTING" />
@@ -98,6 +99,7 @@
       <workItem from="1745330960480" duration="5352000" />
       <workItem from="1745502611080" duration="19651000" />
       <workItem from="1745531590207" duration="4539000" />
+      <workItem from="1745584373149" duration="9701000" />
     </task>
     <servers />
   </component>
