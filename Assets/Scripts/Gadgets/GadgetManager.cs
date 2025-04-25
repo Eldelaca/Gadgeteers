@@ -66,7 +66,6 @@ namespace Gadgets
                         Debug.Log("You already have that equipped");
                         return;
                     }
-                    Debug.Log("Another Gadget is equipped, unequipped current gadget");
                     equippedID = equipID;
                     OnUnEquip();
                     break;

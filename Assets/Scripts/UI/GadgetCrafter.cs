@@ -15,7 +15,7 @@ namespace UI
         [SerializeField] private ComboGadgetStats[] comboGadgets;
         [SerializeField] private GameObject combinedGadgetSlot;
         [SerializeField] private Image combinedGadgetImage;
-        [SerializeField] private Button combinedGadgetButton;
+        [SerializeField] private Button combinedGadgetButton, unCombineGadgetButton;
         
         private GadgetStats[] _gadgetInputs;
         
@@ -70,6 +70,7 @@ namespace UI
             combinedGadgetImage.sprite = gadgetSprite;
 
             combinedGadgetButton.interactable = true;
+            unCombineGadgetButton.interactable = true;
         }
 
         public void AddComboToInventory()
@@ -94,6 +95,7 @@ namespace UI
             _gadgetInputs[1] = null;
             
             combinedGadgetButton.interactable = false;
+            unCombineGadgetButton.interactable = false;
         }
 
         private void ClearSlot()
@@ -109,6 +111,7 @@ namespace UI
             _gadgetInputs[1] = null;
             
             combinedGadgetButton.interactable = false;
+            unCombineGadgetButton.interactable = false;
         }
     }
 }
