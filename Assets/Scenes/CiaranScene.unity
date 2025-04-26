@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d86238c9ca2469488f8563a1033fe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gadgetManagerUI: {fileID: 1512779043}
 --- !u!65 &330706180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -915,9 +914,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23500dab8daa966499f42525518bdc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gadgetManagerUI: {fileID: 1020089915}
   playerMovement: {fileID: 2101286982}
   characterController: {fileID: 2101286990}
-  gadgetManagerUI: {fileID: 1020089915}
+  playerLocomotionInput: {fileID: 0}
+  playerAnimation: {fileID: 0}
 --- !u!4 &1512779044
 Transform:
   m_ObjectHideFlags: 0
@@ -978,8 +979,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseGadgets:
-  - {fileID: 2008336963276613913, guid: edd395dc8434f7243843e0223a709918, type: 3}
-  - {fileID: 6384342847434094926, guid: 5b3934c654848d7488feea1c18ff2035, type: 3}
+  - {fileID: 6384342847434094926, guid: 5ca0e8478d689e146b02db8d09519021, type: 3}
+  - {fileID: 2008336963276613913, guid: 87678ec65ae63f842aff2709d2b52276, type: 3}
   - {fileID: 8604421897198730249, guid: 705734903cfc46a4e9cb2ff7d8a9de50, type: 3}
   - {fileID: 2036506149677026639, guid: 2c9eded45c7b4e44b8665dacfdca947d, type: 3}
   bootsEquipped: 0

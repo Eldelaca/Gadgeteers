@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IceGunStats: {fileID: 11400000, guid: b2e8de26bb351e8438b33c83725b1c10, type: 2}
-  IceBulletPrefab: {fileID: 406313899035418183, guid: 2f1378de48c3d8448ad1830520cdeef5, type: 3}
+  IceBulletPrefab: {fileID: 406313899035418183, guid: 22dfa4c00d1d56943bbde9410e0d81ce, type: 3}
