@@ -5,6 +5,7 @@ using Gadgets;  // for GadgetStats
 
 /// <summary>
 /// This Code can be interchangable to fit any other Storms we have Ice/Fire/Electric/Wind(Normal)
+/// This Code Happens why an Object other than player collides with the Object
 /// Uses the Gadget Stats Script
 /// </summary>
 
@@ -15,6 +16,7 @@ namespace Gadgets.ComboGadgets
     public class TornadoBehavior : MonoBehaviour
     {
         [Header("Fire Storm Stats")]
+        [HideInInspector] public Transform followTarget;
         public GadgetStats stats;
 
         
@@ -23,6 +25,7 @@ namespace Gadgets.ComboGadgets
         // ****** NOTICE ******  // 
         // stats.gadgetDamageTick is being used as the lift force value 
         // I know I dont know why im using it too....
+
         void Start()
         {
             lifeTimer = stats.useDuration;
@@ -30,13 +33,17 @@ namespace Gadgets.ComboGadgets
 
         void Update()
         {
-            // Moves the Object foward
-            transform.Translate(Vector3.forward * stats.range * Time.deltaTime, Space.Self);
-
-            // lifespan countdown
             lifeTimer -= Time.deltaTime;
             if (lifeTimer <= 0f)
+            {
                 Destroy(gameObject);
+                return;
+            }
+
+            if (followTarget != null)
+            {
+                transform.position = followTarget.position;
+            }
         }
 
 
