@@ -5,5 +5,7 @@ namespace Gadgets
         void Equip();
 
         void UnEquip();
+
+        void UseGadget();
     }
 }

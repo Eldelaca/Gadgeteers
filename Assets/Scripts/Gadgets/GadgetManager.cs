@@ -77,6 +77,8 @@ namespace Gadgets
             
             equippedGadget = Instantiate(selectedGadget, playerHandle.position, playerHandle.rotation);
             equippedGadget.transform.parent = playerHandle;
+
+            _gadgetObjects = FindAllGadgetObjects();
             
             equippedID = equipID;
             
@@ -99,6 +101,8 @@ namespace Gadgets
             }
             Destroy(equippedGadget);
             equippedID = 0;
+            
+            _gadgetObjects = FindAllGadgetObjects();
         }
 
         public void OnGadgetUse()
@@ -106,13 +110,10 @@ namespace Gadgets
             if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0) return;
 
             int[] unusableGadgetIDs = { 0, 4, 6 };
-
-
-            foreach (int unusableGadgetID in unusableGadgetIDs)
-            {
-                if (unusableGadgetID == equippedID) return;
-            }
             
+            if (unusableGadgetIDs.Any(unusableGadgetID => unusableGadgetID == equippedID)) return;
+
+            foreach (IGadget gadgetObject in _gadgetObjects) gadgetObject.UseGadget();
         }
 
         private List<IGadget> FindAllGadgetObjects()

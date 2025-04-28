@@ -40,5 +40,13 @@ namespace Gadgets.BaseGadgets
             playerMovement.JumpModification(0, 1f);
             GadgetManager.Instance.bootsEquipped = false; // only for debug, remove on final iteration
         }
+
+        public void UseGadget()
+        {
+            if (GadgetManager.Instance.equippedID != stats.gadgetId) return;
+            
+            // Debug to make sure that nothing goes wrong :3
+            Debug.LogError("For some reason RocketBoots are being used, fix it right neow");
+        }
     }
 }

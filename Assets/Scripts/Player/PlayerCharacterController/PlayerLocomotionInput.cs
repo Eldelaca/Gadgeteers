@@ -55,6 +55,7 @@ namespace Player.PlayerCharacterController
         public void OnShoot(InputAction.CallbackContext context)
         {
             if (context.performed) GadgetManager.Instance.OnGadgetUse();
+
         }
 
         public void OnFlash(InputAction.CallbackContext context)

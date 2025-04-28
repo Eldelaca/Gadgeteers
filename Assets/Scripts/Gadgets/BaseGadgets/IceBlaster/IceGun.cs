@@ -16,35 +16,55 @@ namespace Gadgets.BaseGadgets
         [Header("Gun Settings")]
         public GadgetStats IceGunStats; // 
         public GameObject IceBulletPrefab;  // Prefab of the ice projectile to instantiate
-        private bool canShoot = true;
-        private bool isEquipped = false;
+        private bool canShoot;
 
-
+        private const float BulletForce = 6f;
         
-
-        private void Update()
+        // Using IGadget for Equipping
+        public void Equip()
         {
-           // if (!isEquipped) return;  // Ensure that only equipped weapons can shoot
-
+            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId) return;
             
-            if (Input.GetMouseButtonDown(0) && canShoot)
-            {
-                Shoot();
-            }
+            canShoot = true;
         }
+
+        public void UnEquip()
+        {
+            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId) return;
+            
+            canShoot = false;
+        }
+        
+        public void UseGadget()
+        {
+            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId) return;
+            
+            if (!canShoot) return;
+            Debug.Log(canShoot);
+            Shoot();
+        }
+        
 
         // Handles instantiation of the projectile and applies force
         private void Shoot()
         {
             // Instantiate the ice bullet prefab at the gun's position and rotation
             GameObject iceBullet = Instantiate(IceBulletPrefab, transform.position, transform.rotation);
-
+            
             // Apply force to the bullet with RigidBody
             Rigidbody rb = iceBullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
+                if (Camera.main == null) return;
+                Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+                
+                Vector3 targetPos = Physics.Raycast(mousePos, out RaycastHit hit, Mathf.Infinity)
+                    ? hit.point : mousePos.GetPoint(1000f);
+                
+                Vector3 bulletDirection = (targetPos - transform.position).normalized;
+                
                 // Add force in the forward direction of the Ice Gun
-                rb.AddForce(transform.forward * IceGunStats.range, ForceMode.Impulse);
+                rb.AddForce(bulletDirection * BulletForce, ForceMode.Impulse);
             }
             else
             {
@@ -61,32 +81,6 @@ namespace Gadgets.BaseGadgets
         {
             yield return new WaitForSeconds(IceGunStats.useCooldown);
             canShoot = true;
-        }
-
-        // Using IGadget for Equipping
-        public void Equip()
-        {
-            if (GadgetManager.Instance.equippedID == IceGunStats.gadgetId)
-            {
-                Debug.Log("Ice Gun already equipped");
-                return;
-            }
-
-            if (GadgetManager.Instance.equippedID != 0)
-            {
-                GadgetManager.Instance.OnUnEquip();
-            }
-
-            GadgetManager.Instance.OnEquip(IceGunStats.gadgetId);
-            isEquipped = true;  // Mark the gun as equipped
-        }
-
-        public void UnEquip()
-        {
-            if (GadgetManager.Instance.equippedID != IceGunStats.gadgetId) return;
-
-            isEquipped = false;  // Mark the gun as unequipped
-            GadgetManager.Instance.OnUnEquip();
         }
     }
 }
