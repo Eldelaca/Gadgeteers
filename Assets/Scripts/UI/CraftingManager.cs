@@ -30,15 +30,15 @@ namespace UI
                 {
                     foreach (ComboGadgetStats comboGadgeti in comboGadgets)
                     {
-                        if (comboGadgeti.combinationItem2.gadgetId != secondPassedID ||
-                            comboGadgeti.combinationItem2.gadgetId != firstPassedID)
+                        if (comboGadgeti.combinationItem2.gadgetId == secondPassedID ||
+                            comboGadgeti.combinationItem2.gadgetId == firstPassedID)
                         {
                             int comboGadgetID = comboGadgeti.gadgetId;
                             string gadgetName = comboGadgeti.gadgetName;
                             string gadgetDescription = comboGadgeti.gadgetDescription;
                             Sprite comboGadgetSprite = comboGadgeti.gadgetIcon;
-                            
-                            gadgetCrafter.FillComboGadgetSlot(comboGadgetID, gadgetName, gadgetDescription, comboGadgetSprite, comboGadget.combinationItem1, comboGadget.combinationItem2);
+
+                            gadgetCrafter.FillComboGadgetSlot(comboGadgetID, gadgetName, gadgetDescription, comboGadgetSprite, comboGadgeti.combinationItem1, comboGadgeti.combinationItem2);
                             return;
                         }
                     }
