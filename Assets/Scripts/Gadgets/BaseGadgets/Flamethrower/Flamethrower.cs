@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 /// <summary>
 /// This code handles the Flamethrower:
@@ -17,6 +18,7 @@ namespace Gadgets.BaseGadgets
         // Variables for GameObjects its Connected to
         public GadgetStats Flamestats;
         public GameObject flamethrowerCollider;
+        public VisualEffect flameEffect;
 
         // Keeps track of enemies/obstacles in a range
         private HashSet<GameObject> enemiesInRange = new HashSet<GameObject>();
@@ -57,27 +59,51 @@ namespace Gadgets.BaseGadgets
         }
 
         #region Action Methods
+========
+        private HashSet<GameObject> enemiesInRange;
+
+        private CapsuleCollider boxCollider;
+        
+        public void Equip()
+        {
+            if (GadgetManager.Instance.equippedID != Flamestats.gadgetId) return;
+            
+            flamethrowerCollider.SetActive(true);
+            boxCollider = flamethrowerCollider.GetComponent<CapsuleCollider>();
+        }
+
+        public void UnEquip()
+        {
+            if (GadgetManager.Instance.equippedID != Flamestats.gadgetId) return;
+
+            flamethrowerCollider.SetActive(false);
+        }
+
+        public void UseGadget()
+        {
+            if (GadgetManager.Instance.equippedID != Flamestats.gadgetId) return;
+            
+            boxCollider.enabled = !boxCollider.enabled;
+            flameEffect.enabled = !flameEffect.enabled;
+        }
+
+>>>>>>>> origin/ciaranold:Assets/Scripts/Gadgets/BaseGadgets/Flamethrower.cs
         private void OnTriggerEnter(Collider other)
         {
             // Process only if the collider belongs to an enemy tagged "AI"
             if (!other.CompareTag("AI")) return;
 
-            if (!enemiesInRange.Contains(other.gameObject))
-            {
-                enemiesInRange.Add(other.gameObject);
-                Debug.Log("Enemy entered flame range: " + other.name);
-                StartCoroutine(DamageOverTime(other.gameObject));
-            }
+            if (!enemiesInRange.Add(other.gameObject)) return;
+            Debug.Log("Enemy entered flame range: " + other.name);
+            StartCoroutine(DamageOverTime(other.gameObject));
         }
 
         private void OnTriggerExit(Collider other)
         {
             // Remove enemy from tracking when it exits the collider
-            if (enemiesInRange.Contains(other.gameObject))
-            {
-                Debug.Log("Enemy exited flame range: " + other.name);
-                enemiesInRange.Remove(other.gameObject);
-            }
+            if (!enemiesInRange.Contains(other.gameObject)) return;
+            Debug.Log("Enemy exited flame range: " + other.name);
+            enemiesInRange.Remove(other.gameObject);
         }
 
         private IEnumerator DamageOverTime(GameObject enemy)

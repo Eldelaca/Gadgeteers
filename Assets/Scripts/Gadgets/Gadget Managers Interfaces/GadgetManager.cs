@@ -3,9 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Changes where added to the OnEquip() method [Lines 81+]
-// In case this gets changed....
-
 namespace Gadgets
 {
     public class  GadgetManager : MonoBehaviour
@@ -25,14 +22,7 @@ namespace Gadgets
         public GameObject equippedGadget;
         private List<IGadget> _gadgetObjects;
         public static GadgetManager Instance { get; private set; }
-
-        // Not needed just for self testing
-        private void Start()
-        {
-            OnEquip(3); // This will equip the gadget with ID 1 at scene start
-        }
-
-
+        
         private void Awake()
         {
             if (Instance != null)
@@ -63,15 +53,24 @@ namespace Gadgets
 
         private void OnSceneUnloaded(Scene scene)
         {
-            // Empty
+            // Leave Empty, just for loading in some Lists ^_^
         }
 
         public void OnEquip(int equipID)
         {
-            if (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
+            switch (GameObject.FindGameObjectsWithTag("Gadget").Length != 0)
             {
-                Debug.Log("You already have an item equipped");
-                return;
+                case true:
+                    if (equippedID == equipID)
+                    {
+                        Debug.Log("You already have that equipped");
+                        return;
+                    }
+                    equippedID = equipID;
+                    OnUnEquip();
+                    break;
+                case false:
+                    break;
             }
             
             GameObject selectedGadget = baseGadgets[equipID - 1];
@@ -79,42 +78,42 @@ namespace Gadgets
             equippedGadget = Instantiate(selectedGadget, playerHandle.position, playerHandle.rotation);
             equippedGadget.transform.parent = playerHandle;
 
-
-            // This just allows the script to just check if the gadget has been equipped for testing
-            // Grabs the Equip from that object and equips it
-            // Checking if the weapon is or not equipped
-            /*
-            IGadget gadgetScript = equippedGadget.GetComponent<IGadget>(); // Get the gadget script
-
-            if (gadgetScript != null)
-            {
-                gadgetScript.Equip(); // Call Equip() for this gadget
-            }
-            else
-            {
-                Debug.LogError("The gadget does not have the IGadget Component");
-            }
-            */
-
+            _gadgetObjects = FindAllGadgetObjects();
+            
             equippedID = equipID;
+            
+            foreach (IGadget gadgetObject in _gadgetObjects)
+            {
+                gadgetObject.Equip();
+            }
         }
         
         public void OnUnEquip()
         {
             if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0)
             {
-                Debug.Log("You have no item eqipped");
+                Debug.Log("You have no item equipped");
                 return;
             }
-            
             foreach (IGadget gadgetObject in _gadgetObjects)
             {
                 gadgetObject.UnEquip();
             }
-            
             Destroy(equippedGadget);
             equippedID = 0;
             
+            _gadgetObjects = FindAllGadgetObjects();
+        }
+
+        public void OnGadgetUse()
+        {
+            if (GameObject.FindGameObjectsWithTag("Gadget").Length == 0) return;
+
+            int[] unusableGadgetIDs = { 0, 4, 6 };
+            
+            if (unusableGadgetIDs.Any(unusableGadgetID => unusableGadgetID == equippedID)) return;
+
+            foreach (IGadget gadgetObject in _gadgetObjects) gadgetObject.UseGadget();
         }
 
         private List<IGadget> FindAllGadgetObjects()

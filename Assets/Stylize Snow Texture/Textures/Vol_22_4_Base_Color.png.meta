@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+guid: bb985c0aa5de4204996a97ba545ff997
+========
+guid: 7296222ac35fd5b4981fb0d942ae1947
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+TextureImporter:
+  fileIDToRecycleName: {}
+  externalObjects: {}
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+  serializedVersion: 9
+========
+  serializedVersion: 13
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+========
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+  platformSettings:
+  - serializedVersion: 2
+========
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+========
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+  spritePackingTag: 
+========
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+<<<<<<<< HEAD:Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png.meta
+AssetOrigin:
+  serializedVersion: 1
+  productId: 153579
+  packageName: Stylize Snow Texture
+  packageVersion: 1.0
+  assetPath: Assets/Stylize Snow Texture/Textures/Vol_22_4_Base_Color.png
+  uploadId: 371533
+========
+>>>>>>>> origin/NewAlbus:Assets/Art/2D/UI/managerCogBG.png.meta
