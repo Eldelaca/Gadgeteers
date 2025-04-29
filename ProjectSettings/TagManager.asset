@@ -8,6 +8,7 @@ TagManager:
   - AI
   - Gadget
   - Transformer
+  - Burnable
   layers:
   - Default
   - TransparentFX

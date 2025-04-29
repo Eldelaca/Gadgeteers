@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4acc366ed11930c49af3e58c89c68ac8, type: 3}
-  m_Name: ComboGadgetStats
+  m_Name: IceSkatesStats
   m_EditorClassIdentifier: 
-  gadgetId: 5
-  gadgetName: 
+  gadgetId: 9
+  gadgetName: Ice Skates
   gadgetDescription: 
   gadgetDamageTick: 0
   gadgetMaxDamage: 0
@@ -25,6 +25,6 @@ MonoBehaviour:
   additionalJumpCount: 0
   additionalJumpForce: 0
   gravityMultiplier: 0
-  gadgetIcon: {fileID: 21300000, guid: 6c7db3505824d9f4aa5f542268f7f793, type: 3}
+  gadgetIcon: {fileID: 21300000, guid: a733a7f5f5241414ea8bcacb27cbc2a8, type: 3}
   combinationItem1: {fileID: 11400000, guid: b2e8de26bb351e8438b33c83725b1c10, type: 2}
   combinationItem2: {fileID: 11400000, guid: c6d915b27bb92064e9546668fa86b071, type: 2}

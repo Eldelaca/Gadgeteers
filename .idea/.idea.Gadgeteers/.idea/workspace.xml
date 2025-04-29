@@ -36,7 +36,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging ciaranold",
+    "git-widget-placeholder": "ciaranold",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,6 +105,8 @@
       <workItem from="1745838140663" duration="18336000" />
       <workItem from="1745859432678" duration="12906000" />
       <workItem from="1745874242433" duration="13039000" />
+      <workItem from="1745887804998" duration="2939000" />
+      <workItem from="1745890957902" duration="4538000" />
     </task>
     <servers />
   </component>

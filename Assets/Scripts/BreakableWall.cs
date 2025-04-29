@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BreakableWall : MonoBehaviour
@@ -9,9 +10,16 @@ public class BreakableWall : MonoBehaviour
         Rb = GetComponentsInChildren<Rigidbody>();
     }
 
-    public void FallApart()
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            FallApart();
+        }
+    }
 
+    private void FallApart()
+    {
         foreach (Rigidbody rb in Rb)
         {
             rb.isKinematic = false;
