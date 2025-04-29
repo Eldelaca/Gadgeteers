@@ -1,45 +1,28 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Gadgets.BaseGadgets
 {
     public class LightningWhip : MonoBehaviour, IGadget
     {
-        [Header("References")] [SerializeField]
-        private GadgetStats stats;
-
-        [SerializeField] private GameObject playerHandle;
-        [SerializeField] private LayerMask whatIsGrapple;
-        [SerializeField] private CharacterController player;
-
-        [Header("Grapple Settings")] [SerializeField]
-        private float maxDistance = 1000f;
-
-        [SerializeField] private float grappleSpeed = 20f;
-
-        private LineRenderer _lr;
-
-        private Vector3 _grapplePoint;
-        private bool _isGrappling;
-
-        /*private GameObject _lightningWhipGameObject;*/
-
+        [Header("References")] 
+        [SerializeField] private GadgetStats stats;
 
         private bool _canSwing;
-        private Camera _camera;
+        private BoxCollider _collider;
 
-        private void Start()
+        private void OnEnable()
         {
-            _camera = Camera.main;
-            _lr = GetComponent<LineRenderer>();
+            _collider = GetComponent<BoxCollider>();
         }
 
         public void Equip()
         {
             if (stats.gadgetId != GadgetManager.Instance.equippedID) return;
-
-            /*Transform lightningWhipTransform = playerHandle.transform.Find("LightningWhip");
-            _lightningWhipGameObject = lightningWhipTransform.gameObject;*/
-
+            
+            _canSwing = true;
             GadgetManager.Instance.lightningWhipEquipped = true; // Debugging only pwease remove after :3
 
         }
@@ -48,8 +31,7 @@ namespace Gadgets.BaseGadgets
         {
             if (GadgetManager.Instance.equippedID != stats.gadgetId) return;
 
-            // _lightningWhipGameObject = null;
-
+            _canSwing = false;
             GadgetManager.Instance.bootsEquipped = false; // Debugging only pwease remove after :3
         }
 
@@ -58,12 +40,28 @@ namespace Gadgets.BaseGadgets
             if (GadgetManager.Instance.equippedID != stats.gadgetId) return;
 
             if (!_canSwing) return;
+            Debug.Log("Using Lightning Whip");
             OnWhipSwing();
         }
 
         private void OnWhipSwing()
         {
-            // StartCoroutine(WhipCooldown())
+            StartCoroutine(WhipDamageOverTime());
+            _canSwing = false;
+            StartCoroutine(WhipCooldown());
+        }
+
+        private IEnumerator WhipDamageOverTime()
+        {
+            _collider.enabled = true;
+            yield return new WaitForSeconds(stats.useDuration);
+            _collider.enabled = false;
+        }
+        
+        private IEnumerator WhipCooldown()
+        {
+            yield return new WaitForSeconds(stats.useCooldown);
+            _canSwing = true;
         }
     }
 }

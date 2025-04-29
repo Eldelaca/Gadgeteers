@@ -54,9 +54,11 @@ namespace Player.PlayerCharacterController
         private float _antiBump;
         private float _stepOffset;
         private float _modifiedGravity;
+        private float _modifiedSprintSpeed;
         
         private int _additionalJumps;
         private float _additionalJumpForce = 1f;
+        private float _additionalSpeed;
         
         
 
@@ -71,6 +73,7 @@ namespace Player.PlayerCharacterController
             _antiBump = sprintSpeed;
             _stepOffset = characterController.stepOffset;
             _modifiedGravity = gravity;
+            _modifiedSprintSpeed = sprintSpeed;
         }
         #endregion
         
@@ -145,9 +148,9 @@ namespace Player.PlayerCharacterController
             float lateralAcceleration = !isGrounded ? inAirAcceleration :
                 isWalking ? walkAcceleration :
                 isSprinting ? sprintAcceleration : runAcceleration;
-            float clampLateralMagnitude = isGrounded ? sprintSpeed :
+            float clampLateralMagnitude = isGrounded ? _modifiedSprintSpeed :
                 isWalking ? walkSpeed :
-                isSprinting ? sprintSpeed : runSpeed;
+                isSprinting ? _modifiedSprintSpeed : runSpeed;
             
             Vector3 cameraForwardXZ = new Vector3(playerCamera.transform.forward.x, 0f, playerCamera.transform.forward.z).normalized;
             Vector3 cameraRightXZ = new Vector3(playerCamera.transform.right.x, 0f, playerCamera.transform.right.z).normalized;
@@ -263,6 +266,11 @@ namespace Player.PlayerCharacterController
         public void GravityModification(float gravityModifier)
         {
             _modifiedGravity = gravity * gravityModifier;
+        }
+
+        public void SpeedModification(float speedModifier)
+        {
+            _modifiedSprintSpeed = sprintSpeed * speedModifier;
         }
         #endregion
         
