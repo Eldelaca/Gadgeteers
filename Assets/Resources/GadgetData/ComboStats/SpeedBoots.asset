@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4acc366ed11930c49af3e58c89c68ac8, type: 3}
-  m_Name: FireTornadoStats
+  m_Name: SpeedBoots
   m_EditorClassIdentifier: 
-  gadgetId: 7
-  gadgetName: Fire Storm
-  gadgetDescription: Storm Around Player
+  gadgetId: 10
+  gadgetName: Speed Boots
+  gadgetDescription: Super Speed
   gadgetDamageTick: 0
-  gadgetMaxDamage: 15
+  gadgetMaxDamage: 0
   gadgetDamageInstances: 0
   gadgetDamageInstanceCooldown: 0
-  useCooldown: 1.4
-  useDuration: 3
-  range: 3
+  useCooldown: 0
+  useDuration: 0
+  range: 0
   additionalJumpCount: 0
   additionalJumpForce: 0
   gravityMultiplier: 10
   gadgetIcon: {fileID: 0}
-  combinationItem1: {fileID: 11400000, guid: 07f440a48f3f80140a80307823566015, type: 2}
-  combinationItem2: {fileID: 11400000, guid: 0f16c7193f2d267439bebae735610be7, type: 2}
+  combinationItem1: {fileID: 11400000, guid: 0f16c7193f2d267439bebae735610be7, type: 2}
+  combinationItem2: {fileID: 11400000, guid: c6d915b27bb92064e9546668fa86b071, type: 2}

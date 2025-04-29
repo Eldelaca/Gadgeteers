@@ -31,6 +31,10 @@ namespace Gadgets.ComboGadgets
 
         void Update()
         {
+            // Move forward constantly
+            transform.position += transform.forward * stats.range * Time.deltaTime;
+
+            // Lifetime countdown
             lifeTimer -= Time.deltaTime;
             if (lifeTimer <= 0f)
             {
@@ -38,7 +42,6 @@ namespace Gadgets.ComboGadgets
                 return;
             }
 
-           
         }
 
 

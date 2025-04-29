@@ -45,8 +45,8 @@ namespace Player.PlayerCharacterController
         private PlayerStateMachine _playerStateMachine;
         private Vector2 _cameraRotation = Vector2.zero;
         private Vector2 _playerTargetRotation = Vector2.zero;
-        
-        private bool _isRotatingClockWise ;
+
+        private bool _isRotatingClockWise;
         private float _rotatingToTargetTimer;
         private float _playerVerticalVelocity;
         private int _jumpCounter;
@@ -54,26 +54,30 @@ namespace Player.PlayerCharacterController
         private float _antiBump;
         private float _stepOffset;
         private float _modifiedGravity;
-        
+        private float _modifiedSprintSpeed;
+
+
         private int _additionalJumps;
         private float _additionalJumpForce = 1f;
-        
-        
+        private float _additionalSpeed;
+        private float _modifiedSprintAcceleration;
+
 
         #endregion
-        
+
         #region Startup
         private void Awake()
         {
-            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>(); 
+            _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
             _playerStateMachine = GetComponent<PlayerStateMachine>();
 
             _antiBump = sprintSpeed;
             _stepOffset = characterController.stepOffset;
             _modifiedGravity = gravity;
+            _modifiedSprintSpeed = sprintSpeed;
         }
         #endregion
-        
+
         #region Update Logic    
 
         private void Update()
@@ -141,30 +145,31 @@ namespace Player.PlayerCharacterController
             bool isSprinting = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Sprinting;
             bool isGrounded = _playerStateMachine.InGroundedState();
             bool isWalking = _playerStateMachine.CurrentPlayerMovementState == PlayerMovementState.Walking;
-            
+
             float lateralAcceleration = !isGrounded ? inAirAcceleration :
                 isWalking ? walkAcceleration :
-                isSprinting ? sprintAcceleration : runAcceleration;
-            float clampLateralMagnitude = isGrounded ? sprintSpeed :
+                isSprinting ? _modifiedSprintAcceleration : runAcceleration;
+            float clampLateralMagnitude = isGrounded ? _modifiedSprintSpeed :
                 isWalking ? walkSpeed :
-                isSprinting ? sprintSpeed : runSpeed;
-            
+                isSprinting ? _modifiedSprintSpeed : runSpeed;
+
             Vector3 cameraForwardXZ = new Vector3(playerCamera.transform.forward.x, 0f, playerCamera.transform.forward.z).normalized;
             Vector3 cameraRightXZ = new Vector3(playerCamera.transform.right.x, 0f, playerCamera.transform.right.z).normalized;
             Vector3 movementDirection = cameraRightXZ * _playerLocomotionInput.MovementInput.x + cameraForwardXZ * _playerLocomotionInput.MovementInput.y;
-            
+
             Vector3 movementDelta = movementDirection * lateralAcceleration;
             Vector3 newVelocity = characterController.velocity + movementDelta;
-            
+
             Vector3 currentDrag = newVelocity.normalized * drag;
             newVelocity = (newVelocity.magnitude > drag) ? newVelocity - currentDrag : Vector3.zero;
             newVelocity = Vector3.ClampMagnitude(new Vector3(newVelocity.x, 0f, newVelocity.z), clampLateralMagnitude);
             newVelocity.y += _playerVerticalVelocity;
-            
+
             characterController.Move(newVelocity * Time.deltaTime);
         }
+
         #endregion
-        
+
         #region Late-Update Logic
 
         private void LateUpdate()
@@ -264,8 +269,15 @@ namespace Player.PlayerCharacterController
         {
             _modifiedGravity = gravity * gravityModifier;
         }
+
+        public void SpeedModification(float speedModifier)
+        {
+            _modifiedSprintSpeed = sprintSpeed * speedModifier;
+            _modifiedSprintAcceleration = sprintAcceleration * speedModifier;
+        }
+
         #endregion
-        
+
 
     }
 }
