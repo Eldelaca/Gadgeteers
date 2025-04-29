@@ -19,8 +19,8 @@ MonoBehaviour:
   gadgetMaxDamage: 0
   gadgetDamageInstances: 0
   gadgetDamageInstanceCooldown: 0
-  useCooldown: 0
-  useDuration: 0
+  useCooldown: 1.5
+  useDuration: 2
   range: 0
   additionalJumpCount: 0
   additionalJumpForce: 0
