@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4884705877869536581}
   - component: {fileID: 2982242365422659800}
   - component: {fileID: 8454946447901754397}
-  - component: {fileID: -300982675835473325}
   - component: {fileID: 3036837383388744321}
+  - component: {fileID: 6983173455423671366}
   m_Layer: 0
   m_Name: IceBullet
   m_TagString: Untagged
@@ -108,35 +108,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1707364
-  m_Center: {x: 0, y: -0.008216931, z: 0}
---- !u!54 &-300982675835473325
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406313899035418183}
-  serializedVersion: 4
-  m_Mass: 0.1
-  m_Drag: 0
-  m_AngularDrag: 0.001
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Radius: 0.25442085
+  m_Center: {x: 0, y: 0.017160816, z: -0.010921461}
 --- !u!114 &3036837383388744321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +123,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IceGunStats: {fileID: 11400000, guid: b2e8de26bb351e8438b33c83725b1c10, type: 2}
+--- !u!54 &6983173455423671366
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406313899035418183}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

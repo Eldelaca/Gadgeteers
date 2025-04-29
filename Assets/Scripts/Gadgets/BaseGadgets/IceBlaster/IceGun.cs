@@ -18,7 +18,6 @@ namespace Gadgets.BaseGadgets
         public GameObject IceBulletPrefab;  // Prefab of the ice projectile to instantiate
         private bool canShoot;
 
-        private const float BulletForce = 6f;
         
         // Using IGadget for Equipping
         public void Equip()
@@ -50,21 +49,16 @@ namespace Gadgets.BaseGadgets
         {
             // Instantiate the ice bullet prefab at the gun's position and rotation
             GameObject iceBullet = Instantiate(IceBulletPrefab, transform.position, transform.rotation);
-            
+
             // Apply force to the bullet with RigidBody
             Rigidbody rb = iceBullet.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                if (Camera.main == null) return;
-                Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-                
-                Vector3 targetPos = Physics.Raycast(mousePos, out RaycastHit hit, Mathf.Infinity)
-                    ? hit.point : mousePos.GetPoint(1000f);
-                
-                Vector3 bulletDirection = (targetPos - transform.position).normalized;
-                
-                // Add force in the forward direction of the Ice Gun
-                rb.AddForce(bulletDirection * BulletForce, ForceMode.Impulse);
+                // Add force in the forward direction of the gun
+                Vector3 forwardDirection = transform.forward;
+                rb.AddForce(forwardDirection * IceGunStats.range, ForceMode.Impulse);
+
+                Debug.DrawRay(transform.position, forwardDirection * 10f, Color.cyan, 2f);
             }
             else
             {
