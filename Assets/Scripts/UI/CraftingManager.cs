@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Gadgets;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI
@@ -39,21 +38,19 @@ namespace UI
             foreach (ComboGadgetStats comboGadgeti in checkedCombos)
             {
                 if (comboGadgeti.combinationItem2.gadgetId == secondPassedID ||
-                    comboGadgeti.combinationItem2.gadgetId == firstPassedID) 
+                    comboGadgeti.combinationItem2.gadgetId == firstPassedID)
                 {
                     int comboGadgetID = comboGadgeti.gadgetId;
                     string gadgetName = comboGadgeti.gadgetName;
                     string gadgetDescription = comboGadgeti.gadgetDescription;
                     Sprite comboGadgetSprite = comboGadgeti.gadgetIcon;
-                            
+
                     gadgetCrafter.FillComboGadgetSlot(comboGadgetID, gadgetName, gadgetDescription, comboGadgetSprite, comboGadgeti.combinationItem1, comboGadgeti.combinationItem2);
                     Debug.Log(comboGadgeti.combinationItem1 + " : " + comboGadgeti.combinationItem2);
-                    return; 
+                    return;
                 }
-                    
-            } 
+
+            }
         }
     }
 }
-
-
