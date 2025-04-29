@@ -10,10 +10,10 @@ using System.Collections;
 
 namespace Gadgets.ComboGadgets
 {
-    public class FireTornado : MonoBehaviour, IGadget
+    public class HailStorm : MonoBehaviour, IGadget
     {
         [Header("Stats & Prefab")]
-        public ComboGadgetStats tornadoStats;
+        public ComboGadgetStats HailStats;
         public GameObject tornadoPrefab;
 
         private GameObject activeTornado;
@@ -37,20 +37,20 @@ namespace Gadgets.ComboGadgets
                     return;
                 }
 
-                // instantiates at player
-                Vector3 spawnPos = transform.position;
+                // Spawn at player position
+                Vector3 spawnPos = transform.position + transform.forward * 2f + Vector3.up;
                 activeTornado = Instantiate(
-                            tornadoPrefab,
-                            spawnPos,
-                            Quaternion.LookRotation(transform.forward)
+                    tornadoPrefab,
+                    spawnPos,
+                    Quaternion.LookRotation(transform.forward)
                 );
 
-                
+                // Setup behavior to follow this transform
                 var beh = activeTornado.GetComponent<TornadoBehavior>();
                 if (beh != null)
                 {
-                    beh.stats = tornadoStats;
-                    beh.followTarget = this.transform; 
+                    beh.stats = HailStats;
+                    
                 }
                 else
                 {
@@ -68,13 +68,13 @@ namespace Gadgets.ComboGadgets
         private IEnumerator CooldownCoroutine()
         {
             isOnCooldown = true;
-            yield return new WaitForSeconds(tornadoStats.useCooldown);
+            yield return new WaitForSeconds(HailStats.useCooldown);
             isOnCooldown = false;
         }
 
         public void Equip()
         {
-            if (GadgetManager.Instance.equippedID == tornadoStats.gadgetId) return;
+            if (GadgetManager.Instance.equippedID == HailStats.gadgetId) return;
 
             GadgetManager.Instance.flamethrowerEquipped = true;
             GadgetManager.Instance.lightningWhipEquipped = true;
@@ -82,7 +82,7 @@ namespace Gadgets.ComboGadgets
 
         public void UnEquip()
         {
-            if (GadgetManager.Instance.equippedID != tornadoStats.gadgetId) return;
+            if (GadgetManager.Instance.equippedID != HailStats.gadgetId) return;
 
             GadgetManager.Instance.flamethrowerEquipped = false;
             GadgetManager.Instance.lightningWhipEquipped = false;
@@ -90,8 +90,8 @@ namespace Gadgets.ComboGadgets
 
         public void UseGadget()
         {
-            if (GadgetManager.Instance.equippedID != tornadoStats.gadgetId) return;
-            
+            if (GadgetManager.Instance.equippedID != HailStats.gadgetId) return;
+
             if (isOnCooldown)
                 return;
 

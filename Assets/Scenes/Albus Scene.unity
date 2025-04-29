@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboGadgets:
+  - {fileID: 11400000, guid: fb57cb4ad0af89c4a92611fc141519f9, type: 2}
   - {fileID: 11400000, guid: 5a355baab18850e4eb35cb6901a34a33, type: 2}
   - {fileID: 11400000, guid: 78d9063a0c1d1014f81371ee5aee3d13, type: 2}
   gadgetCrafter: {fileID: 253649453}
@@ -2513,6 +2514,7 @@ MonoBehaviour:
   - {fileID: 2036506149677026639, guid: 2c9eded45c7b4e44b8665dacfdca947d, type: 3}
   - {fileID: 6717259832639018511, guid: 8d7538de0cf2da34a824b4ce0552de92, type: 3}
   - {fileID: 6891883132635278009, guid: 3d48b4879502d6a469c5fa4ac5819558, type: 3}
+  - {fileID: 1199023227262611423, guid: e20dd58ae279e854faf186ff6e955480, type: 3}
   bootsEquipped: 0
   flamethrowerEquipped: 0
   lightningWhipEquipped: 0

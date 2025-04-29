@@ -20,9 +20,9 @@ MonoBehaviour:
   gadgetDamageInstances: 0
   gadgetDamageInstanceCooldown: 0
   useCooldown: 2
-  useDuration: 4
+  useDuration: 2
   range: 0.1
-  additionalJumpCount: 1
+  additionalJumpCount: 0
   additionalJumpForce: 0
   gravityMultiplier: 0.2
   gadgetIcon: {fileID: 0}
