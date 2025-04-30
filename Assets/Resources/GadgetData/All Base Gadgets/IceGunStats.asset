@@ -25,4 +25,4 @@ MonoBehaviour:
   additionalJumpCount: 0
   additionalJumpForce: 0
   gravityMultiplier: 0
-  gadgetIcon: {fileID: 21300000, guid: 30739d4f17365bb42956979fd7f132b4, type: 3}
+  gadgetIcon: {fileID: 21300000, guid: e8086375faa3cc5499ff2ff44d55f21f, type: 3}
