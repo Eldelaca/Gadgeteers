@@ -49,7 +49,7 @@ namespace Gadgets.BaseGadgets
             if (locInput.JumpPressed)
             {
                 jumpCount++;
-                int required = 1 + stats.additionalJumpCount;
+                int required = 1;
                 if (jumpCount >= required)
                 {
                     readyToExplode = true;

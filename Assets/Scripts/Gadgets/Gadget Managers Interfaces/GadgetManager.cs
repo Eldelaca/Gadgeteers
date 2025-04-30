@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -81,7 +82,9 @@ namespace Gadgets
             _gadgetObjects = FindAllGadgetObjects();
             
             equippedID = equipID;
-            
+
+            GadgetManagerUI.Instance.gadgetChanged = true;
+
             foreach (IGadget gadgetObject in _gadgetObjects)
             {
                 gadgetObject.Equip();
@@ -103,6 +106,8 @@ namespace Gadgets
             equippedID = 0;
             
             _gadgetObjects = FindAllGadgetObjects();
+            GadgetManagerUI.Instance.gadgetChanged = false;
+
         }
 
         public void OnGadgetUse()

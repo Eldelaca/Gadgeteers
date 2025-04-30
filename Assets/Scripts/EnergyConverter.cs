@@ -21,7 +21,9 @@ public class EnergyConverter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "LightningWhip(Clone)") ChargePulse();
+        if (other.gameObject.name == "LightningWhip(Clone)" || 
+            other.gameObject.name == "TornadoPrefab(Clone)" ||
+            other.gameObject.name == "SpeedBoots(Clone)") ChargePulse();
     }
 
     private void ChargePulse()

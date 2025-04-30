@@ -1,13 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    public GameObject gadgetUpgradeCollectText;
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Collect"))
-        {
-            Destroy(other.gameObject);
-        }
+        gadgetUpgradeCollectText.SetActive(true);
+        StartCoroutine(ShowText());
+    }
+
+    private IEnumerator ShowText()
+    {
+        yield return new WaitForSeconds(3f);
+        gadgetUpgradeCollectText.SetActive(false);
+        Destroy(gameObject);
     }
 }
 

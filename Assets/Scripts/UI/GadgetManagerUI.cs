@@ -23,6 +23,8 @@ namespace UI
         private string _passedUI;
         private List<IBoxControls> _boxControls = new List<IBoxControls>();
         private List<IGadget> _gadgets = new List<IGadget>();
+
+        public bool gadgetChanged;
         
         public static GadgetManagerUI Instance { get; private set; }
 
@@ -76,7 +78,7 @@ namespace UI
         {
             foreach (var boxObjects in _boxControls)
             {
-                boxObjects.ClearBox(_passedUI);
+                boxObjects.ClearBox(_passedUI, gadgetChanged);
             }
             
             playerLocomotionInput.enabled = true;
@@ -85,6 +87,8 @@ namespace UI
             playerMovement.enabled = true;
             
             gadgetManagerUI.SetActive(false);
+
+            gadgetChanged = false;
         }
         
         private List<IBoxControls> FindAllBoxObjects()

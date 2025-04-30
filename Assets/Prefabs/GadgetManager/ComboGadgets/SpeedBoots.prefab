@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2719426347281069324}
   - component: {fileID: 8251632027180319143}
+  - component: {fileID: -2281579565261668541}
   m_Layer: 0
   m_Name: SpeedBoots
   m_TagString: Gadget
@@ -46,3 +47,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 95f7c87cb5fd2584e8a085d4d8539f06, type: 2}
   playerMovement: {fileID: 0}
+--- !u!65 &-2281579565261668541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5759658598222800318}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}

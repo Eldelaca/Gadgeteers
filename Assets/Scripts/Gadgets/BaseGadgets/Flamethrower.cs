@@ -49,7 +49,7 @@ namespace Gadgets.BaseGadgets
         private void OnTriggerEnter(Collider other)
         {
             // Process only if the collider belongs to an enemy tagged "Burnable "
-            if (!(other.CompareTag("Burnable") || other.CompareTag("AI"))) return;
+            if (other.CompareTag("AI")) return;
 
             if (!enemiesInRange.Add(other.gameObject)) return;
             Debug.Log("Enemy entered flame range: " + other.name);

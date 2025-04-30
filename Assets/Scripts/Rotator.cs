@@ -1,3 +1,4 @@
+using Player.Inventory;
 using UnityEngine;
 
 public class Rotator : MonoBehaviour
@@ -12,6 +13,7 @@ public class Rotator : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            InventoryManager.Instance.AddCollectible();
             Destroy(gameObject);
         }
     }

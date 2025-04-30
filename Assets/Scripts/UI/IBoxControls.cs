@@ -2,6 +2,6 @@ namespace UI
 {
     public interface IBoxControls
     {
-        public void ClearBox(string uniqueID);
+        public void ClearBox(string uniqueID, bool changedGadget);
     }   
 }

@@ -10,8 +10,10 @@ namespace Player.Inventory
         private string _pushedGadgetName, _pushedGadgetDescription;
         private Sprite _pushedGadgetSprite;
         private GadgetStats _inputGadget1, _inputGadget2;
-        
-        
+
+        public CollectibleUI collectibleUI;
+
+
         public ItemSlot[] inventorySlots;
 
         public int collectibleCount;
@@ -48,6 +50,7 @@ namespace Player.Inventory
         public void AddCollectible()
         {
             collectibleCount++;
+            collectibleUI.ChangeCollectibleCount(collectibleCount);
         }
     }
 }

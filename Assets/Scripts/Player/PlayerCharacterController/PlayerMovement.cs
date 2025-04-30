@@ -60,7 +60,7 @@ namespace Player.PlayerCharacterController
         private int _additionalJumps;
         private float _additionalJumpForce = 1f;
         private float _additionalSpeed;
-        private float _modifiedSprintAcceleration;
+        private float _modifiedSprintAcceleration = 1f;
 
 
         #endregion
