@@ -24,7 +24,7 @@ MonoBehaviour:
   range: 0
   additionalJumpCount: 0
   additionalJumpForce: 0
-  gravityMultiplier: 10
+  gravityMultiplier: 1.5
   gadgetIcon: {fileID: 0}
   combinationItem1: {fileID: 11400000, guid: 0f16c7193f2d267439bebae735610be7, type: 2}
   combinationItem2: {fileID: 11400000, guid: c6d915b27bb92064e9546668fa86b071, type: 2}

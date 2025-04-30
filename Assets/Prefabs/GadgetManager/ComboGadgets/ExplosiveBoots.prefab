@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7285157397038871021}
   m_Layer: 0
   m_Name: ExplosiveBoots
-  m_TagString: Untagged
+  m_TagString: Gadget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
