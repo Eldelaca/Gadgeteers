@@ -29,39 +29,25 @@ namespace Gadgets.ComboGadgets
                     Debug.LogError("Tornado prefab is null!");
                     return;
                 }
-
-                // Checking if the Tornado is active
-                if (activeTornado != null)
-                {
-                    Debug.Log("Tornado already active, not spawning a new one.");
-                    return;
-                }
-
-                // Spawn at player position
+                // Spawning the Tornado
                 Vector3 spawnPos = transform.position + transform.forward * 2f + Vector3.up;
-                activeTornado = Instantiate(
-                    tornadoPrefab,
-                    spawnPos,
-                    Quaternion.LookRotation(transform.forward)
-                );
+                var t = Instantiate(tornadoPrefab, spawnPos, Quaternion.LookRotation(transform.forward));
 
-                // Setup behavior to follow this transform
-                var beh = activeTornado.GetComponent<TornadoBehavior>();
+                var beh = t.GetComponent<HailStormBehavior>();
                 if (beh != null)
                 {
                     beh.stats = HailStats;
-                    
                 }
                 else
                 {
                     Debug.LogWarning("TornadoBehavior script missing on prefab!");
                 }
 
-                Debug.Log("Fire Tornado spawned and set to follow player.");
+                Debug.Log("Fire Tornado spawned.");
             }
             catch (System.Exception e)
             {
-                Debug.LogError("Exception spawning tornado: " + e.Message);
+                Debug.LogError(" Exception spawning tornado: " + e.Message);
             }
         }
 
