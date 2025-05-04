@@ -11,6 +11,7 @@ namespace Gadgets.BaseGadgets
         [SerializeField] private GadgetStats stats;
         [SerializeField] private LayerMask grappleLayer;
         [SerializeField] private CharacterController cc;
+        [SerializeField] private GameObject lightningEffect;
 
         [Header("Grapple Settings")]
         [SerializeField] private float grappleRange = 25f;
@@ -79,6 +80,7 @@ namespace Gadgets.BaseGadgets
 
         private void OnWhipSwing()
         {
+            lightningEffect.SetActive(true);
             StartCoroutine(WhipDamageOverTime());
             _canSwing = false;
             StartCoroutine(WhipCooldown());
@@ -88,6 +90,7 @@ namespace Gadgets.BaseGadgets
         {
             _collider.enabled = true;
             yield return new WaitForSeconds(stats.useDuration);
+            lightningEffect.SetActive(false);
             _collider.enabled = false;
         }
 
