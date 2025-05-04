@@ -7,24 +7,17 @@ public class Respawner : MonoBehaviour
     public GameObject player;
     public GameObject respawnPos;
     
-    private MeshCollider _meshCollider;
+    private BoxCollider _meshCollider;
 
     private void Awake()
     {
-        _meshCollider = GetComponent<MeshCollider>();
+        _meshCollider = GetComponent<BoxCollider>();
     }
     
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log(GadgetManager.Instance.equippedID);
-            if (GadgetManager.Instance.equippedID == 9)
-            {
-                _meshCollider.isTrigger = false;
-                return;
-            }
-            player.transform.position = respawnPos.transform.position;
-        }
+        if (!other.CompareTag("Player")) return;
+        if (GadgetManager.Instance.equippedID == 9) return;
+        player.transform.position = respawnPos.transform.position;
     }
 }

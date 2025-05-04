@@ -9,6 +9,7 @@ TagManager:
   - Gadget
   - Transformer
   - Burnable
+  - Water
   layers:
   - Default
   - TransparentFX
