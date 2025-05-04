@@ -67,3 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0f16c7193f2d267439bebae735610be7, type: 2}
+  grappleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  grappleRange: 25
+  grappleSpeed: 40
+  enableGrapple: 1
