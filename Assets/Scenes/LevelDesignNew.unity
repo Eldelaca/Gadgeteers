@@ -17735,7 +17735,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -27478,7 +27478,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -44265,10 +44265,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2520124040484521447, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2471302876458023122, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2050009778}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e45b0352f1b80f448a62d5b156f7de8a, type: 3}
 --- !u!1001 &980438741
@@ -65358,7 +65355,7 @@ MonoBehaviour:
   - {fileID: 6717259832639018511, guid: 8d7538de0cf2da34a824b4ce0552de92, type: 3}
   - {fileID: 6891883132635278009, guid: 3d48b4879502d6a469c5fa4ac5819558, type: 3}
   - {fileID: 1199023227262611423, guid: e20dd58ae279e854faf186ff6e955480, type: 3}
-  - {fileID: 7269177839787070796, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
+  - {fileID: 2139437889378148278, guid: 2244e690095cde3448ee2865c77fbf0d, type: 3}
   - {fileID: 5759658598222800318, guid: 2523eb7188242114790f69dd88516a7a, type: 3}
   bootsEquipped: 0
   flamethrowerEquipped: 0
@@ -68336,63 +68333,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1838533317
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1249413714}
-    m_Modifications:
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7269177839787070796, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-      propertyPath: m_Name
-      value: IceSkates
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
 --- !u!1 &1838577376
 GameObject:
   m_ObjectHideFlags: 0
@@ -71914,11 +71854,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95f7c87cb5fd2584e8a085d4d8539f06, type: 2}
   - {fileID: 11400000, guid: 9cde7fdda70f96741bf7c636d7892e09, type: 2}
   gadgetCrafter: {fileID: 1760330403}
---- !u!4 &2050009778 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1491154745206208395, guid: ea4802ce4e1ea334c940e49ab71c86a5, type: 3}
-  m_PrefabInstance: {fileID: 1838533317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054041047
 GameObject:
   m_ObjectHideFlags: 0
