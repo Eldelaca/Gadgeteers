@@ -1,6 +1,7 @@
 ﻿using Gadgets;
 using System.Collections;
 using System.Collections.Generic;
+using Player.PlayerCharacterController;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -17,6 +18,7 @@ namespace Gadgets.BaseGadgets
         public GadgetStats Flamestats;
         public GameObject flamethrowerCollider;
         public VisualEffect flameEffect;
+        public PlayerLocomotionInput playerInputs;
 
         // Keeps track of enemies/obstacles in a range
         private HashSet<GameObject> enemiesInRange;
@@ -45,6 +47,12 @@ namespace Gadgets.BaseGadgets
             boxCollider.enabled = !boxCollider.enabled;
             flameEffect.enabled = !flameEffect.enabled;
         }
+
+        private void Update()
+        {
+            UseGadget();
+        }
+        
 
         private void OnTriggerEnter(Collider other)
         {

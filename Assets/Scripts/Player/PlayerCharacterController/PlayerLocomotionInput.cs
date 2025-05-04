@@ -14,6 +14,7 @@ namespace Player.PlayerCharacterController
         public Vector2 MovementInput {get; private set;} 
         public Vector2 LookInput {get; private set;}
         public bool SprintToggled {get; private set;}
+        public bool ShootToggled { get; private set; }
         public bool JumpPressed {get; private set;}
         #endregion
         
@@ -54,7 +55,15 @@ namespace Player.PlayerCharacterController
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (context.performed) GadgetManager.Instance.OnGadgetUse();
+            if (context.performed)
+            {
+                GadgetManager.Instance.OnGadgetUse();
+                ShootToggled = true;
+            }
+            else if (context.canceled)
+            {
+                ShootToggled = false;
+            }
 
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnergyConverter : MonoBehaviour
@@ -13,6 +14,8 @@ public class EnergyConverter : MonoBehaviour
     [SerializeField] private Animator doorAnimator;
     
     private EnergyConverter _energyConverter;
+
+    private bool _powerCooldown;
     
     private static readonly int Open = Animator.StringToHash("DoorOpen");
     
@@ -21,13 +24,16 @@ public class EnergyConverter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "LightningWhip(Clone)" || 
-            other.gameObject.name == "TornadoPrefab(Clone)" ||
-            other.gameObject.name == "SpeedBoots(Clone)") ChargePulse();
+        if (other.gameObject.name is "LightningWhip(Clone)" or 
+            "TornadoPrefab(Clone)" or 
+            "SpeedBoots(Clone)" or 
+            "StormPrefab(Clone)") ChargePulse();
     }
 
     private void ChargePulse()
     {
+        if (_powerCooldown) return;
+        
         IsPowered = !IsPowered;
         powerCircle.SetActive(IsPowered);
 
@@ -35,8 +41,19 @@ public class EnergyConverter : MonoBehaviour
         {
             DoorOpen();
         }
+
+        _powerCooldown = true;
+
+        StartCoroutine(ChargeCooldown());
     }
 
+
+    private IEnumerator ChargeCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        _powerCooldown = false;
+    }
+    
     private void DoorOpen()
     {
         doorAnimator.SetTrigger(Open);
